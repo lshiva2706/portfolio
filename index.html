@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laxmi Shiva Prasad Sandhireddy — Geospatial AI/ML Engineer</title>
+<meta name="description" content="Geospatial AI/ML engineer. Deep learning over satellite imagery, LiDAR and terrain — CUDA-accelerated geoprocessing, semantic segmentation, and spatial ML pipelines at terabyte scale.">
+<meta name="author" content="Laxmi Shiva Prasad Sandhireddy">
+<meta name="keywords" content="geospatial machine learning, GeoAI, maps engineer, perception engineer, vehicle intelligence, remote sensing, deep learning, LiDAR, point cloud, satellite imagery, semantic segmentation, CUDA, PyTorch, PostGIS">
+<link rel="canonical" href="https://lshiva2706.github.io/">
+
+<meta property="og:title" content="Laxmi Shiva Prasad Sandhireddy — Geospatial AI/ML Engineer">
+<meta property="og:description" content="Machine learning over terrain, satellite imagery and LiDAR. Perception, mapping systems, and ML at scale.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lshiva2706.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#080C11">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Laxmi Shiva Prasad Sandhireddy",
+  "alternateName": "Shiva Sandhireddy",
+  "jobTitle": "Geospatial AI/ML Engineer",
+  "hasOccupation": [
+    { "@type": "Occupation", "name": "Geospatial AI/ML Engineer" },
+    { "@type": "Occupation", "name": "Maps Engineer" },
+    { "@type": "Occupation", "name": "Perception / Vehicle Intelligence Engineer" }
+  ],
+  "address": { "@type": "PostalAddress", "addressLocality": "Albuquerque", "addressRegion": "NM", "addressCountry": "US" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of Illinois Chicago" },
+    { "@type": "CollegeOrUniversity", "name": "Bennett University" }
+  ],
+  "knowsAbout": ["Geospatial Machine Learning","Remote Sensing","Deep Learning","LiDAR","Computer Vision","CUDA","PyTorch","Spatial Databases"]
+}
+</script>
+
+<style>
+:root{
+  --void:#080C11;
+  --panel:#0E141B;
+  --panel-2:#131B24;
+  --line:#1D2833;
+  --line-2:#2A3846;
+
+  --ink:#E8EEF4;
+  --soft:#93A6B6;
+  --faint:#61748A;
+  --ghost:rgba(147,166,182,.055);
+
+  --c-water:#2E7FA8;
+  --c-flat:#41C7B4;
+  --c-mod:#7FBF5A;
+  --c-steep:#E3B34A;
+  --c-excl:#D96A52;
+  --c-vector:#8E86E0;
+
+  --accent:#41C7B4;
+  --accent-dim:rgba(65,199,180,.12);
+
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --wide:1400px;
+  --gut:clamp(22px,4.2vw,64px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+#bg{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+#bg canvas{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+#bg::after{content:"";position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;
+  background:radial-gradient(ellipse 58% 44% at 50% 40%,rgba(8,12,17,.80) 0%,rgba(8,12,17,.30) 62%,rgba(8,12,17,0) 100%)}
+main,footer,.totop{position:relative;z-index:1}
+body{
+  margin:0;background:var(--void);color:var(--ink);
+  font-family:var(--body);font-size:16.5px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:var(--accent);text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{font-family:var(--display)}
+
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);margin:0;
+}
+.n{font-family:var(--mono);font-size:.93em;font-weight:500;color:var(--ink)}
+
+/* ══════════════ sticky topbar ══════════════ */
+.bar{
+  position:sticky;top:0;z-index:60;
+  background:rgba(14,20,27,.92);backdrop-filter:saturate(160%) blur(12px);
+  -webkit-backdrop-filter:saturate(160%) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.bar-in{max-width:var(--wide);margin:0 auto;padding:0 var(--gut);
+  display:flex;align-items:center;gap:22px;height:66px}
+.brand{display:flex;align-items:center;gap:12px;flex:none;min-width:0}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--panel-2);
+  border:1px solid var(--line-2);display:grid;place-items:center;overflow:hidden;flex:none;
+  transition:border-color .3s,box-shadow .3s}
+.avatar:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.avatar .initials{font-family:var(--display);font-weight:600;font-size:13px;color:var(--faint)}
+.brand .txt{min-width:0}
+.brand h1{font-weight:600;font-size:14px;letter-spacing:-.012em;margin:0;line-height:1.2;white-space:nowrap}
+.brand .role{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:2px 0 0;white-space:nowrap}
+
+.nav{list-style:none;margin:0 auto;padding:0;display:flex;align-items:center;gap:2px}
+.nav a{display:block;position:relative;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--soft);padding:9px 12px;border-radius:3px;transition:color .2s,background .2s}
+.nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:1px;
+  background:var(--accent);transform:scaleX(0);transition:transform .26s cubic-bezier(.4,0,.2,1)}
+.nav a:hover{color:var(--ink);background:var(--panel-2)}
+.nav a.active{color:var(--accent)}
+.nav a.active::after{transform:none}
+
+.bar .links{display:flex;gap:6px;flex:none}
+.bar .links a{width:31px;height:31px;display:grid;place-items:center;border:1px solid var(--line-2);
+  border-radius:3px;color:var(--soft);transition:border-color .22s,color .22s,background .22s,transform .22s}
+.bar .links a:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.bar .links svg{width:14px;height:14px;fill:currentColor}
+.avail{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;color:var(--faint);
+  white-space:nowrap;flex:none;display:flex;align-items:center;gap:7px;padding-left:6px;
+  border-left:1px solid var(--line);margin-left:4px;height:20px}
+.avail .dot{width:6px;height:6px;border-radius:50%;background:var(--c-flat);flex:none;
+  box-shadow:0 0 0 0 rgba(65,199,180,.55);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 7px rgba(65,199,180,0)}100%{box-shadow:0 0 0 0 rgba(65,199,180,0)}}
+
+.railbtn{display:none}
+@media(max-width:1180px){ .avail{display:none} .nav a{padding:9px 9px;font-size:10px;letter-spacing:.1em} }
+@media(max-width:980px){
+  .bar-in{gap:14px}
+  .railbtn{display:grid;place-items:center;width:36px;height:36px;flex:none;margin-left:auto;
+    background:none;border:1px solid var(--line-2);border-radius:3px;color:var(--soft);cursor:pointer}
+  .railbtn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .bar .links{display:none}
+  .nav{position:absolute;top:100%;left:0;right:0;margin:0;display:none;flex-direction:column;
+    align-items:stretch;gap:0;background:var(--panel);border-bottom:1px solid var(--line);
+    padding:8px var(--gut) 16px}
+  .nav.open{display:flex}
+  .nav a{padding:12px 0;font-size:11.5px}
+  .nav a::after{left:0;right:0;bottom:6px}
+}
+
+/* ══════════════ layout ══════════════ */
+main{margin:0 auto;max-width:var(--wide)}
+
+section{
+  position:relative;padding:clamp(58px,8.5vh,100px) var(--gut);
+  border-bottom:1px solid var(--line);
+}
+#contact{border-bottom:0}
+section[id]{scroll-margin-top:78px}
+.about .opening{font-size:18.5px;line-height:1.62;color:var(--ink)}
+.about .opening strong{color:var(--accent)}
+.about .sect{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--faint);margin:30px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.useful{margin-top:0;border-top:1px solid var(--line-2)}
+.useful div{padding:14px 0;border-bottom:1px solid var(--line);transition:padding-left .22s,border-color .22s}
+.useful div:hover{padding-left:7px;border-color:var(--line-2)}
+.useful b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--role,var(--accent));margin-bottom:6px;font-weight:500}
+.useful p{margin:0;font-size:15.5px;color:var(--soft);max-width:60ch}
+
+.head{position:relative;margin-bottom:44px}
+.ghost{
+  position:absolute;top:50%;left:-4px;transform:translateY(-62%);
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(58px,10vw,116px);letter-spacing:-.05em;line-height:1;
+  color:var(--ghost);pointer-events:none;user-select:none;white-space:nowrap;z-index:0;
+}
+.head > *:not(.ghost){position:relative;z-index:1}
+.head .eyebrow{margin-bottom:10px}
+.head h2{font-weight:700;font-size:clamp(25px,3.3vw,36px);letter-spacing:-.028em;line-height:1.12;margin:0}
+.head p{margin:14px 0 0;color:var(--soft);max-width:62ch}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* ══════════════ hero ══════════════ */
+#home{padding-top:clamp(56px,8vh,88px)}
+.hello{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+.tagline{
+  font-weight:800;font-size:clamp(30px,5vw,58px);line-height:1.06;
+  letter-spacing:-.038em;margin:0 0 14px;
+}
+/* role rotates; the materials underneath never do */
+.ident{margin:0 0 28px;display:inline-block}
+.ident .role-line{
+  font-family:var(--mono);font-size:clamp(12.5px,1.6vw,15px);letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);
+  display:flex;align-items:center;gap:2px;min-height:1.6em;
+}
+.ident .caret{
+  display:inline-block;width:2px;height:1em;background:var(--accent);
+  animation:blink 1.05s step-end infinite;
+}
+@keyframes blink{50%{opacity:0}}
+.ident .rule{height:1px;background:var(--line-2);margin:9px 0 8px}
+.ident .materials{
+  font-family:var(--mono);font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--faint);white-space:nowrap;
+}
+.ident .materials .sep{color:var(--line-2);margin:0 9px}
+@media(max-width:520px){
+  .ident{display:block}
+  .ident .materials{white-space:normal;letter-spacing:.16em}
+}
+
+.lede{font-size:clamp(17px,1.9vw,19.5px);line-height:1.6;color:var(--soft);max-width:60ch;margin:0 0 12px}
+.lede strong{color:var(--ink);font-weight:600}
+.lede-sub{color:var(--faint);max-width:58ch;margin:0 0 30px;font-size:16px}
+
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:50px}
+.btn{
+  position:relative;overflow:hidden;isolation:isolate;
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;
+  padding:12px 21px;border:1px solid var(--line-2);border-radius:3px;
+  color:var(--ink);background:var(--panel);transition:color .28s,border-color .28s;
+}
+.btn::before{
+  content:"";position:absolute;inset:0;background:var(--accent);z-index:-1;
+  transform:translateY(101%);transition:transform .32s cubic-bezier(.4,0,.2,1);
+}
+.btn:hover{color:#04231F;border-color:var(--accent)}
+.btn:hover::before{transform:none}
+.btn-solid{background:var(--accent);border-color:var(--accent);color:#04231F;font-weight:500}
+.btn-solid::before{background:#5EDCCB}
+
+.tabs{display:flex;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs::-webkit-scrollbar{height:0}
+.tabs button{flex:1;min-width:152px;background:none;border:0;border-right:1px solid var(--line);color:var(--faint);font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;padding:13px 10px;cursor:pointer;position:relative;transition:color .22s,background .22s;white-space:nowrap}
+.tabs button:last-child{border-right:0}
+.tabs button::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--tabc,var(--accent));transform:scaleX(0);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.tabs button:hover{color:var(--soft);background:var(--panel-2)}
+.tabs button[aria-selected="true"]{color:var(--tabc,var(--accent))}
+.tabs button[aria-selected="true"]::after{transform:none}
+.panelwrap{display:grid}
+.panel{grid-area:1/1;opacity:0;visibility:hidden;transform:scale(.995);
+       transition:opacity .6s cubic-bezier(.4,0,.2,1),visibility .6s,transform .6s cubic-bezier(.4,0,.2,1);
+       pointer-events:none}
+.panel.on{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.progress{height:2px;background:var(--line);position:relative;overflow:hidden}
+.progress i{position:absolute;inset:0 auto 0 0;width:0;background:var(--accent);opacity:.6}
+.progress.idle i{width:0!important;transition:none}
+.legend .cap{margin-left:auto;color:var(--line-2)}
+@media(max-width:640px){.legend .cap{display:none}}
+.portrait{width:100%;aspect-ratio:4/5;min-height:240px;border:1px solid var(--line-2);border-radius:4px;overflow:hidden;background:var(--panel-2);display:grid;place-items:center;margin:0 0 18px;position:relative}
+.portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(.28) contrast(1.04)}
+.portrait .ph{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);text-align:center;padding:0 20px;line-height:1.7}
+.stack h3 i{width:7px;height:7px;border-radius:1px;background:var(--bar,var(--accent));flex:none;display:inline-block}
+.stack h3{display:flex;align-items:center;gap:8px}
+.viewer{border:1px solid var(--line-2);border-radius:4px;overflow:hidden;background:var(--panel);transition:border-color .3s}
+.viewer:hover{border-color:#33465A}
+.viewer-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.viewer-top .tick{color:var(--c-flat)}
+.stage{position:relative;height:clamp(260px,42vh,420px);min-height:260px;touch-action:pan-y;background:#0A1017}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage .lbl{position:absolute;bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;background:rgba(8,12,17,.78);border:1px solid var(--line-2);padding:5px 9px;border-radius:2px;color:var(--soft);pointer-events:none}
+.stage .lbl-l{left:12px}
+.stage .lbl-r{right:12px}
+.handle{position:absolute;top:0;bottom:0;width:2px;background:var(--ink);transform:translateX(-1px);pointer-events:none;box-shadow:0 0 14px rgba(0,0,0,.7)}
+.handle::after{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:var(--void);border:2px solid var(--ink);transition:border-color .2s,transform .2s}
+.stage:hover .handle::after{border-color:var(--accent);transform:scale(1.08)}
+.handle .arrows{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-size:11px;color:var(--ink);z-index:2;letter-spacing:-.05em}
+.swipe{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;-webkit-appearance:none;appearance:none;background:none}
+.swipe::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:250px;cursor:ew-resize}
+.swipe::-moz-range-thumb{width:44px;height:250px;border:0;background:transparent;cursor:ew-resize}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:11px 14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:1px;margin-right:6px;vertical-align:-1px}
+
+.counters{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;
+  overflow:hidden;margin-top:48px;
+}
+.counters div{background:var(--panel);padding:24px 20px;transition:background .25s}
+.counters div:hover{background:var(--panel-2)}
+.counters .fig{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.03em;color:var(--accent);line-height:1;display:block}
+.counters .cap{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:10px;display:block}
+
+/* ══════════════ about ══════════════ */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:30px 56px;align-items:start}
+.about p{margin:0 0 16px;max-width:64ch;color:var(--soft)}
+.about p:last-child{margin-bottom:0}
+.about strong{color:var(--ink);font-weight:600}
+.about em{color:var(--ink);font-style:italic}
+.facts{border-top:1px solid var(--line)}
+.facts div{display:flex;justify-content:space-between;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;transition:padding-left .22s,border-color .22s}
+.facts div:hover{padding-left:6px;border-color:var(--line-2)}
+.facts .k{color:var(--faint);text-transform:uppercase;font-size:10px;letter-spacing:.14em}
+.facts .v{color:var(--ink);text-align:right}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+
+/* ══════════════ interests ══════════════ */
+.grid6{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px}
+.tile{
+  position:relative;overflow:hidden;background:var(--panel);
+  border:1px solid var(--line);border-radius:4px;display:flex;flex-direction:column;
+  transition:transform .28s cubic-bezier(.4,0,.2,1),border-color .28s,background .28s;
+}
+.thumb{display:block;width:100%;background:#0A1017;border-bottom:1px solid var(--line);overflow:hidden}
+.thumb svg{display:block;width:100%;height:auto}
+.tile .txt{padding:18px 20px 22px}
+.tile .kick{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bar,var(--accent));margin:0 0 7px}
+.tile::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--bar,var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .32s cubic-bezier(.4,0,.2,1)}
+.tile:hover{transform:translateY(-5px);border-color:var(--line-2);background:var(--panel-2)}
+.tile:hover::before{transform:none}
+.tile .ico{display:block;width:26px;height:26px;color:var(--bar,var(--accent));margin-bottom:14px;transition:transform .3s}
+.tile:hover .ico{transform:scale(1.12) rotate(-4deg)}
+.tile .ico svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tile h3{font-weight:600;font-size:16.5px;letter-spacing:-.012em;margin:0 0 8px;line-height:1.3}
+.tile p{margin:0;font-size:14.5px;line-height:1.6;color:var(--soft)}
+
+/* ══════════════ skills ══════════════ */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.stack article{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:22px 20px 24px;transition:border-color .26s,background .26s}
+.stack article:hover{border-color:var(--line-2);background:var(--panel-2)}
+.stack h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--faint);font-weight:500;margin:0 0 14px;padding-bottom:11px;border-bottom:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--soft);
+  border:1px solid var(--line-2);padding:4px 9px;border-radius:2px;
+  transition:color .2s,border-color .2s,background .2s,transform .2s;
+}
+.chip:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.chip.key{color:var(--ink);border-color:#3B4C5E}
+
+/* ══════════════ education ══════════════ */
+.acc details{border:1px solid var(--line);border-radius:4px;background:var(--panel);margin-bottom:10px;overflow:hidden;transition:border-color .25s}
+.acc details[open]{border-color:var(--line-2)}
+.acc details:hover{border-color:var(--line-2)}
+.acc summary{list-style:none;cursor:pointer;padding:19px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .deg{font-family:var(--display);font-weight:600;font-size:16.5px;letter-spacing:-.012em}
+.acc summary .yr{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--faint);margin-left:auto}
+.acc summary .plus{width:15px;height:15px;flex:none;position:relative;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.acc summary .plus::before,.acc summary .plus::after{content:"";position:absolute;background:var(--accent);border-radius:1px}
+.acc summary .plus::before{top:7px;left:0;width:15px;height:1.5px}
+.acc summary .plus::after{left:7px;top:0;width:1.5px;height:15px;transition:opacity .3s}
+.acc details[open] summary .plus{transform:rotate(180deg)}
+.acc details[open] summary .plus::after{opacity:0}
+.acc .body{padding:0 22px 22px;border-top:1px solid var(--line);margin-top:2px;padding-top:18px}
+.acc .body .school{color:var(--ink);font-weight:600;margin:0 0 6px;font-family:var(--display);font-size:15.5px}
+.acc .body p{margin:0 0 6px;color:var(--soft);font-size:15.5px}
+.acc .body .meta{font-family:var(--mono);font-size:11.5px;color:var(--faint);letter-spacing:.05em;margin:0}
+
+/* ══════════════ experience ══════════════ */
+.tl{position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line-2)}
+.tl article{position:relative;padding-bottom:38px}
+.tl article:last-child{padding-bottom:0}
+.tl article::before{
+  content:"";position:absolute;left:-30px;top:7px;width:11px;height:11px;border-radius:50%;
+  background:var(--void);border:2px solid var(--line-2);transition:border-color .28s,box-shadow .28s,transform .28s;
+}
+.tl article:hover::before{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);transform:scale(1.15)}
+.tl .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-bottom:4px}
+.tl .rtitle{font-weight:600;font-size:19.5px;letter-spacing:-.018em;margin:0;color:var(--ink)}
+.tl .co{font-family:var(--mono);font-size:12.5px;color:var(--accent);letter-spacing:.03em}
+.tl .when{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.06em;margin-left:auto}
+.tl .where{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.06em;display:block;margin-bottom:12px}
+.tl .note{margin:0 0 14px;color:var(--soft);font-size:15.5px}
+.tl ul{margin:0;padding:0;list-style:none}
+.tl li{position:relative;padding-left:20px;margin-bottom:11px;max-width:72ch;color:var(--soft)}
+.tl li::before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--line-2);transition:width .25s,background .25s}
+.tl article:hover li::before{background:var(--accent);width:14px}
+.tl li:last-child{margin-bottom:0}
+@media(max-width:640px){.tl .when{margin-left:0;width:100%}}
+
+/* ══════════════ projects ══════════════ */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{
+  position:relative;display:flex;flex-direction:column;
+  background:var(--panel);border:1px solid var(--line);border-radius:4px;
+  padding:26px 24px 24px;overflow:hidden;
+  transition:transform .3s cubic-bezier(.4,0,.2,1),border-color .3s,background .3s;
+}
+.card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(65,199,180,.07),transparent 62%);
+  opacity:0;transition:opacity .35s;
+}
+.card:hover{transform:translateY(-5px);border-color:var(--line-2);background:var(--panel-2)}
+.card:hover::after{opacity:1}
+.card .kicker{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bar,var(--accent));margin:0 0 12px;display:flex;align-items:center;gap:9px}
+.card .kicker .wip{color:var(--faint);border:1px solid var(--line-2);border-radius:2px;padding:1px 6px;letter-spacing:.1em}
+.card h3{font-weight:600;font-size:19px;letter-spacing:-.018em;margin:0 0 10px}
+.card p{margin:0 0 16px;color:var(--soft);font-size:15.5px;flex:1}
+.card .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--faint);border:1px solid var(--line-2);padding:3px 7px;border-radius:2px}
+.card .go{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+}
+.card .go .arw{transition:transform .3s cubic-bezier(.4,0,.2,1);display:inline-block}
+.card:hover .go .arw{transform:translateX(5px)}
+
+/* ══════════════ contact ══════════════ */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,352px);gap:34px 60px;align-items:start}
+.contact-lead{font-weight:600;font-size:clamp(21px,2.7vw,28px);line-height:1.32;letter-spacing:-.02em;margin:0 0 16px;max-width:20ch}
+.contact-note{margin:0;color:var(--soft);max-width:52ch}
+.chan{border-top:1px solid var(--line)}
+.chan a,.chan span.row{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;transition:padding-left .24s,border-color .24s}
+.chan a:hover{padding-left:7px;border-color:var(--line-2)}
+.chan a:hover .v{color:var(--accent)}
+.chan .k{color:var(--faint);text-transform:uppercase;font-size:10px;letter-spacing:.15em;flex:none}
+.chan .v{color:var(--ink);text-align:right;transition:color .2s}
+@media(max-width:860px){.contact{grid-template-columns:1fr}}
+
+.storybtn{margin-top:30px;display:inline-flex;align-items:center;gap:11px;cursor:pointer;
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--soft);
+  background:var(--panel);border:1px solid var(--line-2);border-radius:3px;padding:13px 19px;
+  transition:color .24s,border-color .24s,background .24s,transform .24s}
+.storybtn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.storybtn .sq{width:8px;height:8px;border-radius:1px;background:var(--accent);flex:none;
+  box-shadow:0 0 0 0 rgba(65,199,180,.5);animation:pulse 2.6s infinite}
+
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px;
+  background:rgba(4,7,10,.82);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.modal.on{opacity:1;visibility:visible}
+.modal .sheet{position:relative;width:min(680px,100%);max-height:86vh;overflow-y:auto;
+  background:var(--panel);border:1px solid var(--line-2);border-radius:5px;
+  padding:clamp(26px,4vw,42px);box-shadow:0 30px 80px rgba(0,0,0,.6);
+  transform:translateY(14px) scale(.985);transition:transform .34s cubic-bezier(.4,0,.2,1)}
+.modal.on .sheet{transform:none}
+.modal .sheet::-webkit-scrollbar{width:8px}
+.modal .sheet::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:4px}
+.modal .eyebrow{margin-bottom:10px}
+.modal h3{font-weight:700;font-size:clamp(22px,3vw,28px);letter-spacing:-.024em;margin:0 0 20px;line-height:1.18}
+.modal p{color:var(--soft);margin:0 0 16px;font-size:16.5px;line-height:1.68}
+.modal p:last-of-type{margin-bottom:0}
+.modal em{color:var(--ink);font-style:italic}
+.modal .x{position:absolute;top:14px;right:14px;width:34px;height:34px;display:grid;place-items:center;
+  background:none;border:1px solid var(--line-2);border-radius:3px;color:var(--faint);cursor:pointer;
+  transition:color .2s,border-color .2s}
+.modal .x:hover{color:var(--accent);border-color:var(--accent)}
+.modal .x svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.modal .pull{border-left:2px solid var(--accent);padding-left:18px;margin:22px 0;color:var(--ink);
+  font-size:17.5px;line-height:1.55}
+.mailwrap{position:relative;display:inline-block}
+.mailcard{position:absolute;top:calc(100% + 10px);left:0;z-index:80;min-width:296px;
+  background:var(--panel);border:1px solid var(--line-2);border-radius:4px;padding:14px;
+  box-shadow:0 18px 44px rgba(0,0,0,.55);
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .24s,visibility .24s,transform .24s cubic-bezier(.4,0,.2,1)}
+.mailcard.on{opacity:1;visibility:visible;transform:none}
+.mailcard .addr{font-family:var(--mono);font-size:12.5px;color:var(--ink);background:var(--void);
+  border:1px solid var(--line);border-radius:3px;padding:10px 11px;margin:0 0 10px;
+  word-break:break-all;user-select:all;cursor:text}
+.mailcard .opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--soft);
+  background:none;border:1px solid var(--line);border-radius:3px;padding:9px 11px;margin-bottom:6px;
+  cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.mailcard .opt:last-child{margin-bottom:0}
+.mailcard .opt:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim)}
+.mailcard .opt svg{width:14px;height:14px;fill:currentColor;flex:none}
+@media(max-width:520px){.mailcard{min-width:0;width:min(92vw,320px)}}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);z-index:90;
+  background:var(--panel);border:1px solid var(--accent);color:var(--ink);border-radius:3px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.03em;padding:11px 18px;
+  opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+footer{max-width:var(--wide);margin:0 auto;padding:26px var(--gut) 44px;font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.06em;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;max-width:1180px}
+
+.totop{
+  position:fixed;right:22px;bottom:22px;z-index:70;
+  width:42px;height:42px;display:grid;place-items:center;
+  background:var(--panel);border:1px solid var(--line-2);border-radius:50%;
+  color:var(--soft);opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:opacity .3s,transform .3s,color .22s,border-color .22s;
+}
+.totop.on{opacity:1;pointer-events:auto;transform:none}
+.totop:hover{color:var(--accent);border-color:var(--accent)}
+.totop svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<div id="bg" aria-hidden="true"><canvas id="bgc"></canvas></div>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#home">
+      <span class="avatar">
+        <img src="profile.jpg" alt="Laxmi Shiva Prasad Sandhireddy"
+             onerror="this.remove();document.getElementById('mono').hidden=false">
+        <span class="initials" id="mono" hidden>LS</span>
+      </span>
+      <span class="txt">
+        <h1>Laxmi Shiva Prasad Sandhireddy</h1>
+        <p class="role">Geospatial AI/ML Engineer</p>
+      </span>
+    </a>
+
+    <button class="railbtn" id="railbtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+    </button>
+
+    <ul class="nav" id="nav">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#interests">Focus</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="links">
+      <a href="https://github.com/lshiva2706" aria-label="GitHub" rel="me">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/laxmishivaprasad-sandhireddy-ab2776187" aria-label="LinkedIn" rel="me">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.1 1.43-2.1 2.9V21h-4V9z"/></svg>
+      </a>
+      <a href="https://drive.google.com/file/d/1KXaNQA7KYTqX0hY0CNpgnKLFwJE40L4C/view?usp=sharing" aria-label="Resume">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2H6.5A1.5 1.5 0 0 0 5 3.5v17A1.5 1.5 0 0 0 6.5 22h11a1.5 1.5 0 0 0 1.5-1.5V8l-6-6zm0 2.4L16.6 8H13V4.4zM8 12h8v1.6H8V12zm0 3.4h8V17H8v-1.6z"/></svg>
+      </a>
+    </div>
+
+    <p class="avail"><span class="dot"></span>Open to new roles</p>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════ HOME ═══════════ -->
+<section id="home">
+  <p class="hello rv">Hi, I'm Shiva</p>
+
+  <h2 class="tagline rv">I teach machines to read<br>the ground, the map, the road.</h2>
+
+  <div class="ident rv">
+    <p class="role-line" aria-hidden="true"><span id="rot"></span><span class="caret"></span></p>
+    <div class="rule"></div>
+    <p class="materials">Terrain<span class="sep">·</span>Imagery<span class="sep">·</span>LiDAR<span class="sep">·</span>Maps</p>
+  </div>
+  <p class="sr-only">Geospatial AI/ML Engineer, Maps Engineer, Perception and Vehicle Intelligence Engineer — working with imagery, LiDAR and terrain.</p>
+
+  <p class="lede rv">
+    I build machine learning systems that turn raw geometry — elevation, satellite imagery,
+    <strong>LiDAR point clouds</strong> — into decisions people act on.
+  </p>
+  <p class="lede-sub rv">
+    Five years across GPU-accelerated geoprocessing, spatial deep learning and ML platform work.
+    Currently building terrain intelligence for utility-scale solar at KiloNewton.
+  </p>
+
+  <div class="actions rv">
+    <span class="mailwrap">
+      <button class="btn btn-solid" id="mailbtn" aria-expanded="false" aria-controls="mailcard">Email me</button>
+      <div class="mailcard" id="mailcard" role="dialog" aria-label="Email options">
+        <p class="addr" id="addrtext">shivachowdary27j@gmail.com</p>
+        <button class="opt" id="copybtn" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
+          Copy address
+        </button>
+        <a class="opt" id="gmailbtn" target="_blank" rel="noopener"
+           href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=shivachowdary27j@gmail.com&amp;su=Hello%20Shiva">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2.2.5L12 12.2 19.8 6H4.2zM20 7.7l-7.4 5.9a1 1 0 0 1-1.2 0L4 7.7V18h16V7.7z"/></svg>
+          Compose in Gmail
+        </a>
+        <a class="opt" href="mailto:shivachowdary27j@gmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Open my mail app
+        </a>
+      </div>
+    </span>
+    <a class="btn" href="https://drive.google.com/file/d/1KXaNQA7KYTqX0hY0CNpgnKLFwJE40L4C/view?usp=sharing">Résumé (PDF)</a>
+    <a class="btn" href="#experience">See the work</a>
+  </div>
+
+  <div class="viewer rv">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="t-percep"  aria-controls="p-percep"  aria-selected="true"  style="--tabc:var(--c-flat)">01&nbsp;&nbsp;LiDAR perception</button>
+      <button role="tab" id="t-route"   aria-controls="p-route"   aria-selected="false" style="--tabc:var(--c-vector)">02&nbsp;&nbsp;Map &amp; route inference</button>
+      <button role="tab" id="t-terrain" aria-controls="p-terrain" aria-selected="false" style="--tabc:var(--c-steep)">03&nbsp;&nbsp;Terrain classification</button>
+    </div>
+
+    <div class="panelwrap">
+    <div class="panel on" id="p-percep" role="tabpanel" aria-labelledby="t-percep">
+      <div class="stage" id="stage3">
+        <canvas id="lidar" aria-hidden="true"></canvas>
+        <span class="lbl lbl-l">LiDAR sweep</span>
+        <span class="lbl lbl-r" id="detstat">0 objects</span>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--c-water)"></i>Point cloud</span>
+        <span><i style="background:var(--c-flat)"></i>Vehicle</span>
+        <span><i style="background:var(--c-steep)"></i>Pedestrian</span>
+        <span><i style="background:var(--c-excl)"></i>Low confidence</span>
+        <span class="cap">Cluster → classify → track</span>
+      </div>
+    </div>
+
+    <div class="panel" id="p-route" role="tabpanel" aria-labelledby="t-route">
+      <div class="stage" id="stage2">
+        <canvas id="road" aria-hidden="true"></canvas>
+        <span class="lbl lbl-l">Road graph</span>
+        <span class="lbl lbl-r" id="routestat">Idle</span>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--line-2)"></i>Network edges</span>
+        <span><i style="background:var(--c-water)"></i>Explored frontier</span>
+        <span><i style="background:var(--c-vector)"></i>Shortest path</span>
+        <span><i style="background:var(--c-steep)"></i>Origin / destination</span>
+        <span class="cap">A* over a weighted graph</span>
+      </div>
+    </div>
+
+    <div class="panel" id="p-terrain" role="tabpanel" aria-labelledby="t-terrain">
+      <div class="stage" id="stage">
+        <canvas id="map" aria-hidden="true"></canvas>
+        <span class="lbl lbl-l">Hillshade + contours</span>
+        <span class="lbl lbl-r">Slope classification</span>
+        <input class="swipe" id="swipe" type="range" min="0" max="1000" value="480"
+               aria-label="Compare hillshade against slope classification">
+        <div class="handle" id="handle"><span class="arrows">&#9668; &#9658;</span></div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--c-flat)"></i>Buildable &lt; 5%</span>
+        <span><i style="background:var(--c-mod)"></i>Moderate 5–10%</span>
+        <span><i style="background:var(--c-steep)"></i>Steep 10–18%</span>
+        <span><i style="background:var(--c-excl)"></i>Excluded &gt; 18%</span>
+        <span><i style="background:var(--c-water)"></i>Depression</span>
+        <span class="cap">Drag to compare</span>
+      </div>
+    </div>
+    </div>
+    <div class="progress" id="prog"><i></i></div>
+  </div>
+
+  <div class="counters rv">
+    <div><span class="fig" data-to="5" data-suffix="">0</span><span class="cap">Years building</span></div>
+    <div><span class="fig" data-to="20" data-suffix="x">0</span><span class="cap">Runtime reduction</span></div>
+    <div><span class="fig" data-to="10" data-suffix=" ms">0</span><span class="cap">Query latency at 50k users</span></div>
+    <div><span class="fig" data-to="10" data-suffix=" TB+">0</span><span class="cap">Multi-modal data validated</span></div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about">
+  <div class="head rv">
+    <span class="ghost" aria-hidden="true">About</span>
+    <p class="eyebrow">About</p>
+    <h2>Who am I?</h2>
+  </div>
+
+  <div class="about rv">
+    <div>
+      <p class="opening">
+        Hi — I'm <strong>Shiva</strong>, a geospatial AI/ML engineer in Albuquerque. I build machine learning
+        systems that understand physical space: what the ground looks like, where things are, and what's
+        moving around them. Satellites, elevation models, LiDAR, maps. If it has a coordinate attached, I've
+        probably spent a weekend arguing with it.
+      </p>
+      <p>
+        Five years in, that's turned into depth across an unusual combination — someone who can build &amp;
+        train models <em>and</em> write the CUDA kernel underneath them <em>and</em> keep the pipeline standing
+        at ten terabytes. Not because I planned it that way, but because geospatial work needs all three before
+        it turns into a product anyone can use, or a number a decision-maker can act on.
+      </p>
+
+      <p class="sect">What I've built</p>
+      <p>
+        Right now I'm at <strong>KiloNewton</strong>, building terrain intelligence for utility-scale solar.
+        The piece I'm proudest of: our terrain analysis used to be an overnight batch job, so nobody could
+        iterate on a site design in a single working day. I rebuilt it with graph neural networks over TIN
+        meshes and custom CUDA kernels and got a <span class="n">70 MW</span> site down to under
+        <span class="n">20</span> minutes. Same week, different problem — classifying buildable land from raw
+        DEM and shapefiles, which pushed site-suitability accuracy up <span class="n">35%</span>. Then I built
+        the Mapbox and Kepler.gl interface so the layout team could run it without me in the loop.
+      </p>
+      <p>
+        Before that I spent two years at <strong>Discover Partners Institute</strong> doing spatio-temporal
+        modelling across <span class="n">30</span> public health studies, alongside my master's at UIC. That's
+        where I learned to build things that hold up under scrutiny — Optuna search, A/B validation
+        frameworks, PySpark and BigQuery pipelines pulling <span class="n">500+</span> heterogeneous sources
+        together at <span class="n">99.2%</span> spatial accuracy. Forecast accuracy went up
+        <span class="n">23%</span>; more usefully, iteration time dropped <span class="n">40%</span>, which is
+        what actually lets a research team move.
+      </p>
+      <p>
+        And I started at <strong>Justdial</strong> in Bengaluru on location search — <span class="n">100M+</span>
+        monthly users, PostGIS queries and caching that took inference from <span class="n">100 ms</span> to
+        <span class="n">10 ms</span> under <span class="n">50,000</span> concurrent load. That job is why I
+        still think in latency budgets before I think about architecture.
+      </p>
+
+      <p class="sect">How I work</p>
+      <p>
+        I start at the end. Before touching a model I want to know who reads the output, what they do with
+        it, and how wrong it's allowed to be — because that determines everything upstream, from
+        architecture to how I split the validation folds.
+      </p>
+      <p>
+        Then I go for the boring bottleneck first. Usually it isn't the model. It's the six-hour runtime, the
+        projection mismatch nobody caught, the pipeline that silently drops a tile. I'd rather ship a
+        straightforward model on solid ground than a clever one on sand — and I benchmark against a simple
+        baseline every time, partly out of honesty, partly because the baseline wins more often than people
+        admit.
+      </p>
+      <p>
+        And I try to hand things over properly. Documentation, a working interface, a repo someone else can
+        pick up. Work that only functions while I'm holding it isn't finished.
+      </p>
+
+      <p class="sect">What I'm looking for next</p>
+      <p>
+        I want to be somewhere the geometry is the hard part of the problem — not a data source someone
+        bolted on late. In practice that's one of three roles, and I've done production work in all three:
+      </p>
+
+      <div class="useful">
+        <div style="--role:var(--c-steep)">
+          <b>Earth observation &amp; spatial ML</b>
+          <p>Segmentation and change detection over imagery, DEM and LiDAR — with the statistics to make the
+             result defensible, not just accurate.</p>
+        </div>
+        <div style="--role:var(--c-flat)">
+          <b>Perception, mapping &amp; 3D</b>
+          <p>Point clouds, sensor fusion, road-network inference and routing, held to a real latency budget
+             rather than a benchmark score.</p>
+        </div>
+        <div style="--role:var(--c-excl)">
+          <b>ML platform &amp; infrastructure</b>
+          <p>Multi-terabyte pipelines, experiment tracking and deployment — the half that decides whether a
+             model ever reaches anyone.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:24px">
+        Most roles want one of those three. I've shipped all of them, which makes me most useful on the seams
+        where they meet — the model that needs a GPU rewrite, the pipeline quietly corrupting a projection,
+        the score nobody can defend. Lately I've been going deeper on geospatial foundation models and the
+        cloud-native stack the field is consolidating around, and I'd like my next role to put that into
+        production.
+      </p>
+      <p>
+        I'm on an H-1B in Albuquerque and open to relocating. If this sounds like your team, I'd like to hear
+        about it.
+      </p>
+
+      <button class="storybtn" id="storybtn" type="button">
+        <span class="sq" aria-hidden="true"></span>
+        What got me into this in the first place?
+      </button>
+
+    </div>
+
+    <div>
+      <figure class="portrait">
+        <img src="profile.jpg" alt="Laxmi Shiva Prasad Sandhireddy"
+             onerror="this.remove();document.getElementById('phnote').hidden=false">
+        <figcaption class="ph" id="phnote" hidden>Add <b>profile.jpg</b><br>to the repo root</figcaption>
+      </figure>
+      <div class="facts">
+        <div><span class="k">Experience</span><span class="v">5 years</span></div>
+        <div><span class="k">Now</span><span class="v">KiloNewton</span></div>
+        <div><span class="k">Degree</span><span class="v">M.S. CS, UIC</span></div>
+        <div><span class="k">Based</span><span class="v">Albuquerque, NM</span></div>
+        <div><span class="k">Work status</span><span class="v">H-1B</span></div>
+        <div><span class="k">Relocation</span><span class="v">Open</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOCUS ═══════════ -->
+<section id="interests">
+  <div class="head rv">
+    <span class="ghost" aria-hidden="true">Focus</span>
+    <p class="eyebrow">Focus</p>
+    <h2>What I work on</h2>
+    <p>Six problems I keep coming back to. Different fields on paper — the same job underneath: teach a model to understand geometry well enough that someone will trust its output.</p>
+  </div>
+
+  <div class="grid6">
+
+    <article class="tile rv" style="--bar:var(--c-steep)">
+      <span class="thumb" aria-hidden="true">
+        <svg viewBox="0 0 320 180">
+          <rect width="320" height="180" fill="#0A1017"/>
+          <g fill="none" stroke="#E3B34A">
+            <path d="M-10 152 Q60 120 120 134 T330 106" stroke-opacity=".18"/>
+            <path d="M-10 136 Q62 102 122 118 T330 90"  stroke-opacity=".26"/>
+            <path d="M-10 120 Q64 84 124 102 T330 74"   stroke-opacity=".36"/>
+            <path d="M-10 104 Q66 66 126 86 T330 58"    stroke-opacity=".5"/>
+            <path d="M-10 88 Q68 48 128 70 T330 42"     stroke-opacity=".68"/>
+            <path d="M-10 72 Q70 30 130 54 T330 26"     stroke-opacity=".9"/>
+          </g>
+          <path d="M0 160 H320" stroke="#41C7B4" stroke-opacity=".45" stroke-dasharray="3 5"/>
+          <circle cx="130" cy="54" r="3.2" fill="#D96A52"/>
+          <text x="139" y="58" font-family="ui-monospace,monospace" font-size="9" fill="#61748A">18% slope</text>
+        </svg>
+      </span>
+      <div class="txt">
+        <p class="kick">Elevation</p>
+        <h3>Terrain &amp; DEM analysis</h3>
+        <p>Slope, hydrology and buildability from bare geometry — TIN networks, contour extraction, viewsheds.</p>
+      </div>
+    </article>
+
+    <article class="tile rv" style="--bar:var(--c-mod)">
+      <span class="thumb" aria-hidden="true">
+        <svg viewBox="0 0 320 180">
+          <rect width="320" height="180" fill="#0A1017"/>
+          <g>
+            <rect x="16"  y="22" width="70" height="54" fill="#7FBF5A" opacity=".24"/>
+            <rect x="90"  y="22" width="70" height="54" fill="#E3B34A" opacity=".3"/>
+            <rect x="164" y="22" width="70" height="54" fill="#2E7FA8" opacity=".3"/>
+            <rect x="238" y="22" width="70" height="54" fill="#7FBF5A" opacity=".14"/>
+            <rect x="16"  y="80" width="70" height="54" fill="#2E7FA8" opacity=".2"/>
+            <rect x="90"  y="80" width="70" height="54" fill="#7FBF5A" opacity=".38"/>
+            <rect x="164" y="80" width="70" height="54" fill="#D96A52" opacity=".24"/>
+            <rect x="238" y="80" width="70" height="54" fill="#E3B34A" opacity=".18"/>
+          </g>
+          <g stroke="#1D2833"><path d="M88 14V142M162 14V142M236 14V142M10 78H310" fill="none"/></g>
+          <rect x="90" y="80" width="70" height="54" fill="none" stroke="#41C7B4" stroke-width="1.8"/>
+          <text x="94" y="152" font-family="ui-monospace,monospace" font-size="9" fill="#61748A">B4 · B8 · NDVI  t1→t2</text>
+        </svg>
+      </span>
+      <div class="txt">
+        <p class="kick">Remote sensing</p>
+        <h3>Imagery &amp; change detection</h3>
+        <p>Semantic segmentation and time-series over multispectral, thermal and satellite raster stacks.</p>
+      </div>
+    </article>
+
+    <article class="tile rv" style="--bar:var(--c-flat)">
+      <span class="thumb" aria-hidden="true">
+        <svg viewBox="0 0 320 180">
+          <rect width="320" height="180" fill="#0A1017"/>
+          <g stroke="#41C7B4" stroke-opacity=".2" fill="none">
+            <path d="M160 172 L36 58M160 172 L104 34M160 172 L216 34M160 172 L284 58"/>
+          </g>
+          <g fill="#2E7FA8" opacity=".65">
+            <circle cx="62" cy="122" r="1.7"/><circle cx="76" cy="114" r="1.7"/><circle cx="90" cy="120" r="1.7"/>
+            <circle cx="104" cy="108" r="1.7"/><circle cx="120" cy="116" r="1.7"/><circle cx="134" cy="106" r="1.7"/>
+            <circle cx="70" cy="104" r="1.5"/><circle cx="112" cy="98" r="1.5"/>
+            <circle cx="202" cy="120" r="1.7"/><circle cx="216" cy="112" r="1.7"/><circle cx="230" cy="118" r="1.7"/>
+            <circle cx="248" cy="110" r="1.7"/><circle cx="264" cy="120" r="1.7"/><circle cx="278" cy="112" r="1.7"/>
+            <circle cx="224" cy="100" r="1.5"/><circle cx="258" cy="98" r="1.5"/>
+            <circle cx="44" cy="136" r="1.3"/><circle cx="162" cy="132" r="1.3"/><circle cx="296" cy="130" r="1.3"/>
+          </g>
+          <rect x="54" y="94" width="92" height="42" fill="none" stroke="#41C7B4" stroke-width="1.6"/>
+          <text x="54" y="88" font-family="ui-monospace,monospace" font-size="9" fill="#41C7B4">CAR 0.94</text>
+          <rect x="196" y="94" width="92" height="42" fill="none" stroke="#E3B34A" stroke-width="1.6"/>
+          <text x="196" y="88" font-family="ui-monospace,monospace" font-size="9" fill="#E3B34A">PED 0.88</text>
+          <circle cx="160" cy="172" r="4.5" fill="#41C7B4"/>
+        </svg>
+      </span>
+      <div class="txt">
+        <p class="kick">Perception</p>
+        <h3>Point clouds &amp; 3D</h3>
+        <p>Detection, segmentation and tracking over LiDAR and fused camera streams — held to a latency budget.</p>
+      </div>
+    </article>
+
+    <article class="tile rv" style="--bar:var(--c-vector)">
+      <span class="thumb" aria-hidden="true">
+        <svg viewBox="0 0 320 180">
+          <rect width="320" height="180" fill="#0A1017"/>
+          <g stroke="#2A3846" fill="none" stroke-width="1.4">
+            <path d="M32 148 L96 146 L150 130 L214 126 L272 104"/>
+            <path d="M96 146 L74 98M150 130 L128 106M214 126 L232 76M272 104 L286 36"/>
+            <path d="M74 98 L128 106 L170 62 L232 76"/>
+          </g>
+          <path d="M32 148 L74 98 L128 106 L170 62 L232 76 L286 36" fill="none" stroke="#8E86E0" stroke-width="2.6" stroke-linejoin="round"/>
+          <g fill="#0A1017" stroke="#8E86E0" stroke-width="1.6">
+            <circle cx="74" cy="98" r="3.6"/><circle cx="128" cy="106" r="3.6"/>
+            <circle cx="170" cy="62" r="3.6"/><circle cx="232" cy="76" r="3.6"/>
+          </g>
+          <circle cx="32" cy="148" r="5.2" fill="#E3B34A"/>
+          <circle cx="286" cy="36" r="5.2" fill="#E3B34A"/>
+          <text x="216" y="162" font-family="ui-monospace,monospace" font-size="9" fill="#61748A">cost 41.2</text>
+        </svg>
+      </span>
+      <div class="txt">
+        <p class="kick">Mapping</p>
+        <h3>Map inference &amp; routing</h3>
+        <p>Road-network extraction, graph routing, spatial indexing and tile pipelines that answer in real time.</p>
+      </div>
+    </article>
+
+    <article class="tile rv" style="--bar:var(--c-water)">
+      <span class="thumb" aria-hidden="true">
+        <svg viewBox="0 0 320 180">
+          <rect width="320" height="180" fill="#0A1017"/>
+          <rect x="110" y="50" width="100" height="74" rx="4" fill="none" stroke="#2E7FA8" stroke-width="1.8"/>
+          <g fill="#2E7FA8" opacity=".22">
+            <rect x="124" y="64" width="16" height="16"/><rect x="146" y="64" width="16" height="16"/>
+            <rect x="168" y="64" width="16" height="16"/><rect x="190" y="64" width="6" height="16"/>
+            <rect x="124" y="86" width="16" height="16"/><rect x="146" y="86" width="16" height="16"/>
+            <rect x="168" y="86" width="16" height="16"/><rect x="190" y="86" width="6" height="16"/>
+          </g>
+          <text x="128" y="118" font-family="ui-monospace,monospace" font-size="10" fill="#2E7FA8">CUDA</text>
+          <g stroke="#2E7FA8" stroke-opacity=".5" fill="none">
+            <path d="M110 64H88M110 80H88M110 96H88M110 112H88M210 64h22M210 80h22M210 96h22M210 112h22"/>
+            <path d="M130 50V30M154 50V30M178 50V30M130 124v20M154 124v20M178 124v20"/>
+          </g>
+          <rect x="20" y="152" width="72" height="7" rx="1.5" fill="#61748A" opacity=".55"/>
+          <rect x="20" y="164" width="6"  height="7" rx="1.5" fill="#41C7B4"/>
+          <text x="98" y="159" font-family="ui-monospace,monospace" font-size="8.5" fill="#61748A">6 h</text>
+          <text x="32" y="171" font-family="ui-monospace,monospace" font-size="8.5" fill="#41C7B4">20 min</text>
+        </svg>
+      </span>
+      <div class="txt">
+        <p class="kick">Performance</p>
+        <h3>GPU &amp; accelerated compute</h3>
+        <p>Custom CUDA kernels and GPU geoprocessing — the difference between an overnight job and a coffee break.</p>
+      </div>
+    </article>
+
+    <article class="tile rv" style="--bar:var(--c-excl)">
+      <span class="thumb" aria-hidden="true">
+        <svg viewBox="0 0 320 180">
+          <rect width="320" height="180" fill="#0A1017"/>
+          <g stroke="#2A3846" fill="none">
+            <rect x="22" y="34" width="62" height="24" rx="2"/>
+            <rect x="22" y="74" width="62" height="24" rx="2"/>
+            <rect x="22" y="114" width="62" height="24" rx="2"/>
+            <rect x="132" y="74" width="56" height="24" rx="2"/>
+            <rect x="232" y="74" width="66" height="24" rx="2"/>
+          </g>
+          <g stroke="#D96A52" stroke-opacity=".75" fill="none" stroke-width="1.4">
+            <path d="M84 46h26q12 0 12 12v16M84 86h48M84 126h26q12 0 12-12V98M188 86h44"/>
+          </g>
+          <g fill="#D96A52"><circle cx="132" cy="86" r="2.8"/><circle cx="232" cy="86" r="2.8"/></g>
+          <g font-family="ui-monospace,monospace" font-size="8" fill="#61748A">
+            <text x="30" y="49">RASTER</text><text x="30" y="89">LIDAR</text><text x="30" y="129">TABULAR</text>
+            <text x="140" y="89">ETL</text><text x="240" y="89">TRAIN</text>
+          </g>
+          <text x="232" y="118" font-family="ui-monospace,monospace" font-size="8.5" fill="#D96A52">10 TB+ / run</text>
+        </svg>
+      </span>
+      <div class="txt">
+        <p class="kick">Platform</p>
+        <h3>ML infrastructure</h3>
+        <p>The other half — multi-terabyte ETL, feature pipelines, experiment tracking and deployment that holds up.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══════════ SKILLS ═══════════ -->
+<section id="skills">
+  <div class="head rv">
+    <span class="ghost" aria-hidden="true">Skills</span>
+    <p class="eyebrow">Skills</p>
+    <h2>Stack</h2>
+    <p>Highlighted items are where I’ve done the most production work.</p>
+  </div>
+
+  <div class="stack">
+    <article class="rv" style="--bar:var(--c-steep)">
+      <h3><i></i>Geospatial &amp; remote sensing</h3>
+      <div class="chips">
+        <span class="chip key">DEM / DSM</span><span class="chip key">LiDAR</span><span class="chip key">Point cloud classification</span>
+        <span class="chip key">Satellite imagery</span><span class="chip">Thermal imagery</span>
+        <span class="chip key">Semantic segmentation</span><span class="chip">Object detection</span>
+        <span class="chip">Feature detection</span><span class="chip">Change detection</span>
+        <span class="chip">Spatio-temporal analysis</span><span class="chip">TIN networks</span>
+        <span class="chip">ERA5 reanalysis</span>
+      </div>
+    </article>
+
+    <article class="rv" style="--bar:var(--c-vector)">
+      <h3><i></i>ML &amp; deep learning</h3>
+      <div class="chips">
+        <span class="chip key">PyTorch</span><span class="chip key">CUDA</span><span class="chip">TensorFlow</span>
+        <span class="chip">JAX</span><span class="chip key">Scikit-learn</span><span class="chip key">XGBoost</span>
+        <span class="chip">OpenCV</span><span class="chip key">CNNs</span><span class="chip key">GNNs</span>
+        <span class="chip">Transformers</span><span class="chip">U-Net</span><span class="chip">Mask R-CNN</span>
+        <span class="chip">YOLO</span><span class="chip">Transfer learning</span>
+        <span class="chip key">Spatio-temporal NNs</span>
+      </div>
+    </article>
+
+    <article class="rv" style="--bar:var(--c-mod)">
+      <h3><i></i>Statistics &amp; validation</h3>
+      <div class="chips">
+        <span class="chip key">GWR</span><span class="chip">Spatial autocorrelation</span>
+        <span class="chip key">Spatio-temporal forecasting</span><span class="chip">k-fold CV</span>
+        <span class="chip">Spatial cross-validation</span><span class="chip key">Ground-truth benchmarking</span>
+        <span class="chip">RMSE / MAE</span><span class="chip key">A/B testing</span>
+        <span class="chip key">Optuna</span><span class="chip">Feature engineering</span>
+      </div>
+    </article>
+
+    <article class="rv" style="--bar:var(--c-water)">
+      <h3><i></i>GIS tooling &amp; visualization</h3>
+      <div class="chips">
+        <span class="chip key">PostGIS</span><span class="chip key">GeoPandas</span><span class="chip key">Rasterio</span>
+        <span class="chip">GDAL / OGR</span><span class="chip">ArcGIS</span><span class="chip">Shapely</span>
+        <span class="chip key">Mapbox</span><span class="chip key">Kepler.gl</span>
+        <span class="chip">BigQuery GIS</span><span class="chip">Spatial indexing</span>
+        <span class="chip">Tiling</span><span class="chip">Map projections</span>
+      </div>
+    </article>
+
+    <article class="rv" style="--bar:var(--c-excl)">
+      <h3><i></i>Platform &amp; cloud</h3>
+      <div class="chips">
+        <span class="chip key">Vertex AI</span><span class="chip key">BigQuery</span><span class="chip key">PySpark</span>
+        <span class="chip">Databricks</span><span class="chip key">Airflow</span><span class="chip">MLflow</span>
+        <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">CI/CD</span>
+        <span class="chip">Model versioning</span><span class="chip">Monitoring</span>
+        <span class="chip key">Multi-TB ETL</span>
+      </div>
+    </article>
+
+    <article class="rv" style="--bar:var(--c-flat)">
+      <h3><i></i>Engineering &amp; languages</h3>
+      <div class="chips">
+        <span class="chip key">Python</span><span class="chip key">SQL</span><span class="chip">C++</span>
+        <span class="chip">Scala</span><span class="chip">Java</span><span class="chip">JavaScript</span>
+        <span class="chip">R</span><span class="chip key">REST APIs</span>
+        <span class="chip">Microservices</span><span class="chip">Caching</span>
+        <span class="chip key">Latency optimization</span><span class="chip">React</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section id="experience">
+  <div class="head rv">
+    <span class="ghost" aria-hidden="true">Work</span>
+    <p class="eyebrow">Experience</p>
+    <h2>What I've shipped</h2>
+  </div>
+
+  <div class="tl">
+    <article class="rv">
+      <div class="top">
+        <h3 class="rtitle">Geo AI / ML Engineer III</h3>
+        <span class="co">KiloNewton</span>
+        <span class="when">Aug 2024 — Present</span>
+      </div>
+      <span class="where">Albuquerque, NM</span>
+      <p class="note">Terrain intelligence for utility-scale solar development.</p>
+      <ul>
+        <li>Built GPU-accelerated geoprocessing over TIN networks and graph neural networks, cutting terrain analysis runtime from hours to under <span class="n">20</span> minutes for solar sites above <span class="n">70 MW</span>.</li>
+        <li>Developed automated GeoAI workflows classifying terrain slope and buildable area from DEM and shapefile datasets, training on multi-gigabyte inputs with PyTorch and Scikit-learn — <span class="n">+35%</span> site suitability accuracy.</li>
+        <li>Designed an interactive geospatial interface on Mapbox and Kepler.gl delivering predictive insight and spatial visualization, cutting manual mapping effort by <span class="n">50%</span>.</li>
+      </ul>
+    </article>
+
+    <article class="rv">
+      <div class="top">
+        <h3 class="rtitle">Applied Data Scientist II</h3>
+        <span class="co">Discover Partners Institute</span>
+        <span class="when">Aug 2022 — May 2024</span>
+      </div>
+      <span class="where">Chicago, IL · concurrent with M.S.</span>
+      <p class="note">Spatio-temporal modelling and ML infrastructure for public health research.</p>
+      <ul>
+        <li>Developed and deployed XGBoost and spatio-temporal neural network models across <span class="n">30</span> research studies — <span class="n">+23%</span> forecast accuracy, <span class="n">−40%</span> model iteration time.</li>
+        <li>Designed ML experimentation pipelines with feature engineering, Optuna hyperparameter search and A/B testing, validated on <span class="n">10 TB+</span> multi-modal datasets spanning raster, LiDAR and tabular sources.</li>
+        <li>Built scalable ETL and feature pipelines in PySpark and BigQuery across <span class="n">500+</span> heterogeneous sources at <span class="n">99.2%</span> spatial accuracy, accelerating research delivery <span class="n">60%</span>.</li>
+      </ul>
+    </article>
+
+    <article class="rv">
+      <div class="top">
+        <h3 class="rtitle">Software Engineer, ML Platform</h3>
+        <span class="co">Justdial</span>
+        <span class="when">Mar 2021 — Jul 2022</span>
+      </div>
+      <span class="where">Bengaluru, India</span>
+      <p class="note">Location-based search and recommendation at consumer scale.</p>
+      <ul>
+        <li>Developed REST APIs and microservices for real-time inference, optimizing with caching layers and PostGIS spatial queries — latency from <span class="n">100 ms</span> to <span class="n">10 ms</span> at <span class="n">50,000+</span> concurrent users.</li>
+        <li>Built and scaled a location-based search platform with integrated recommendation APIs, serving <span class="n">100M+</span> monthly active users and lifting engagement <span class="n">40%</span>.</li>
+        <li>Designed end-to-end pipelines connecting event streams to training workflows, feeding <span class="n">10M+</span> daily interactions back into the models and improving search relevance <span class="n">35%</span>.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<section id="projects">
+  <div class="head rv">
+    <span class="ghost" aria-hidden="true">Work</span>
+    <p class="eyebrow">Projects</p>
+    <h2>Work outside the day job</h2>
+    <p>Code and write-ups are on GitHub — each repo includes the architecture, the results, and what I'd do differently.</p>
+  </div>
+
+  <div class="pgrid">
+    <article class="card rv" style="--bar:var(--c-steep)">
+      <p class="kicker">Remote sensing</p>
+      <h3>Urban Heat Detection &amp; Prediction</h3>
+      <p>A recommendation system for city planners combining graph theory and generative models over satellite thermal imagery, backed by a BigQuery GIS and Airflow ETL pipeline processing <span class="n">10 TB+</span> of data — <span class="n">+35%</span> prediction accuracy.</p>
+      <div class="tags"><span class="tag">BigQuery GIS</span><span class="tag">Airflow</span><span class="tag">Thermal imagery</span><span class="tag">Graph models</span></div>
+      <a class="go" href="https://github.com/lshiva2706/Urban-Heat-Detection-and-Prediction">View code <span class="arw">→</span></a>
+    </article>
+
+    <article class="card rv" style="--bar:var(--c-vector)">
+      <p class="kicker">Spatial ML</p>
+      <h3>Solar Farm Suitability &amp; Yield</h3>
+      <p>An agentic system pairing spatial ML — geographically weighted regression and hybrid models — with ERA5 climate reanalysis. Deployed and evaluated on Vertex AI for scalable geoprocessing, cutting site selection from weeks to hours.</p>
+      <div class="tags"><span class="tag">Vertex AI</span><span class="tag">GWR</span><span class="tag">ERA5</span><span class="tag">GeoPandas</span></div>
+      <a class="go" href="https://github.com/lshiva2706/Solar-Farm-Suitability---Energy-Yield-Optimization">View code <span class="arw">→</span></a>
+    </article>
+
+    <article class="card rv" style="--bar:var(--c-flat)">
+      <p class="kicker">Perception <span class="wip">Write-up in progress</span></p>
+      <h3>ADAS Perception &amp; Path Planning</h3>
+      <p>End-to-end perception pipeline for autonomous vehicle simulation, running U-Net and Mask R-CNN over fused camera and LiDAR streams. Simulation environment processes <span class="n">10 TB+</span> of sensor data at <span class="n">92%</span> accuracy and sub-<span class="n">50 ms</span> latency.</p>
+      <div class="tags"><span class="tag">PyTorch</span><span class="tag">U-Net</span><span class="tag">Mask R-CNN</span><span class="tag">LiDAR</span></div>
+      <a class="go" href="mailto:shivachowdary27j@gmail.com?subject=ADAS%20perception%20project">Ask me about it <span class="arw">→</span></a>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════ EDUCATION ═══════════ -->
+<section id="education">
+  <div class="head rv">
+    <span class="ghost" aria-hidden="true">Study</span>
+    <p class="eyebrow">Education</p>
+    <h2>Foundations</h2>
+  </div>
+
+  <div class="acc rv">
+    <details open>
+      <summary>
+        <span class="plus" aria-hidden="true"></span>
+        <span class="deg">Master of Science</span>
+        <span class="yr">2022 — 2024</span>
+      </summary>
+      <div class="body">
+        <p class="school">University of Illinois, Chicago</p>
+        <p>M.S. Computer Science — concentrated on machine learning, computer vision and large-scale data systems.</p>
+        <p class="meta">Aug 2022 — May 2024 &nbsp;·&nbsp; GPA 3.9 / 4.0</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>
+        <span class="plus" aria-hidden="true"></span>
+        <span class="deg">Bachelor of Technology</span>
+        <span class="yr">2017 — 2021</span>
+      </summary>
+      <div class="body">
+        <p class="school">Bennett University</p>
+        <p>B.Tech in Computer Science and Engineering — foundations in algorithms, distributed systems and machine learning.</p>
+        <p class="meta">Jul 2017 — May 2021 &nbsp;·&nbsp; GPA 8.5 / 10.0</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="head rv">
+    <span class="ghost" aria-hidden="true">Contact</span>
+    <p class="eyebrow">Contact</p>
+    <h2>Get in touch</h2>
+  </div>
+
+  <div class="contact rv">
+    <div>
+      <p class="contact-lead">Happy to talk about imagery, terrain, perception — anything with a coordinate system attached.</p>
+      <p class="contact-note">
+        I read every email and reply to all of them. If you're hiring for geospatial ML, perception,
+        mapping or applied ML at scale, just write — a line about the team and the problem is plenty.
+      </p>
+    </div>
+    <div class="chan">
+      <a href="mailto:shivachowdary27j@gmail.com"><span class="k">Email</span><span class="v">shivachowdary27j@gmail.com</span></a>
+      <a href="https://www.linkedin.com/in/laxmi-shiva-prasad-ab2776187/"><span class="k">LinkedIn</span><span class="v">/in/laxmi-shiva-prasad-ab2776187</span></a>
+      <a href="https://github.com/lshiva2706"><span class="k">GitHub</span><span class="v">@lshiva2706</span></a>
+      <a href="https://medium.com/@shivachowdary27j"><span class="k">Writing</span><span class="v">medium.com/@shivachowdary27j</span></a>
+      <a href="https://drive.google.com/file/d/1KXaNQA7KYTqX0hY0CNpgnKLFwJE40L4C/view?usp=sharing"><span class="k">Résumé</span><span class="v">Download PDF</span></a>
+      <span class="row"><span class="k">Based in</span><span class="v">Albuquerque, NM</span></span>
+      <span class="row"><span class="k">Work status</span><span class="v">H-1B</span></span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Laxmi Shiva Prasad Sandhireddy</span>
+  <span>Terrain rendered client-side · marching squares over a synthetic elevation field</span>
+</footer>
+
+</main>
+
+<div class="modal" id="story" role="dialog" aria-modal="true" aria-labelledby="storyh">
+  <div class="sheet">
+    <button class="x" id="storyx" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <p class="eyebrow">The origin story</p>
+    <h3 id="storyh">It started with maps.</h3>
+    <p>
+      Long before I wrote a line of Python I was the person who'd pull up a route and actually study it —
+      not just to get somewhere, but because a map is a compressed argument about the world. This road
+      exists. This one is faster at 6pm. The river is why the road bends here. You're looking at thousands
+      of decisions someone made about physical space, flattened into something you can read in a second.
+    </p>
+    <p class="pull">
+      If a map can tell me how to reach a destination, what else could it tell me — if something were
+      reading it properly?
+    </p>
+    <p>
+      That's the thread I've been pulling ever since. First the geometry itself: projections, elevation, why
+      a two-degree slope changes what you can build on a hillside. Then the machine learning on top of it —
+      segmentation over satellite imagery, graph networks over terrain meshes, forecasting across space and
+      time. Somewhere in there GIS stopped being a mapping discipline to me and became a modelling one:
+      <em>the map wasn't the output anymore, it was the input.</em>
+    </p>
+    <p>
+      What I care about now is the last step — turning all of it back into something a person can actually
+      use. A model that knows a hillside is unbuildable does nothing until it reaches the engineer deciding
+      where the panels go. A route is worthless until it's in front of a driver. That's why I keep ending up
+      building the interface too, and why I care as much about a six-hour runtime as an accuracy score.
+    </p>
+    <p>
+      Spatial data only gets interesting to me at the point where it becomes a decision somebody makes.
+    </p>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<a class="totop" id="totop" href="#home" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</a>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── scroll reveal ── */
+  var rv = [].slice.call(document.querySelectorAll('.rv'));
+  if(reduce || !('IntersectionObserver' in window)){
+    rv.forEach(function(el){el.classList.add('in')});
+  } else {
+    var ro = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.05});
+    rv.forEach(function(el){ro.observe(el)});
+  }
+
+  /* ── scroll spy ── */
+  var links=[].slice.call(document.querySelectorAll('.nav a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  if('IntersectionObserver' in window){
+    var spy=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        links.forEach(function(a){a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)});
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    secs.forEach(function(s){spy.observe(s)});
+  }
+
+  /* ── mobile nav ── */
+  var btn=document.getElementById('railbtn'), nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  nav.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}
+  });
+
+  /* ── rotating role title (typewriter) ── */
+  var roles=['Geospatial AI/ML Engineer','Maps Engineer','Perception / Vehicle Intelligence Engineer'];
+  var rot=document.getElementById('rot');
+  if(rot){
+    if(reduce){
+      rot.textContent=roles[0];
+    } else {
+      var ri=0, ci=0, del=false;
+      (function type(){
+        var word=roles[ri];
+        ci = del ? ci-1 : ci+1;
+        rot.textContent=word.slice(0,ci);
+        var wait=del?34:62;
+        if(!del && ci===word.length){ wait=2100; del=true; }
+        else if(del && ci===0){ del=false; ri=(ri+1)%roles.length; wait=300; }
+        setTimeout(type,wait);
+      })();
+    }
+  }
+
+  /* ── back to top ── */
+  var tt=document.getElementById('totop');
+  window.addEventListener('scroll',function(){
+    tt.classList.toggle('on', window.scrollY > 700);
+  },{passive:true});
+
+  /* ── count up ── */
+  var figs=[].slice.call(document.querySelectorAll('.fig'));
+  function runCount(el){
+    var to=+el.dataset.to, sfx=el.dataset.suffix||'', t0=null, dur=1300;
+    if(reduce){ el.textContent=to+sfx; return; }
+    requestAnimationFrame(function step(ts){
+      if(t0===null) t0=ts;
+      var p=Math.min((ts-t0)/dur,1);
+      var e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(to*e)+sfx;
+      if(p<1) requestAnimationFrame(step);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var co=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ runCount(e.target); co.unobserve(e.target); } });
+    },{threshold:.4});
+    figs.forEach(function(f){co.observe(f)});
+  } else { figs.forEach(runCount); }
+
+  /* ── project card cursor glow ── */
+  [].slice.call(document.querySelectorAll('.card')).forEach(function(c){
+    c.addEventListener('pointermove',function(e){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      c.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+
+  /* ══════════════════════════════════════════════
+     Terrain comparator.
+     Synthetic elevation field rendered two ways:
+       left  — hillshade + contours (index contour every 5th)
+       right — slope reclassified into buildability bands
+     Contours via marching squares.
+     ══════════════════════════════════════════════ */
+  var cv=document.getElementById('map');
+  if(!cv||!cv.getContext) return;
+  var ctx=cv.getContext('2d');
+  var stage=document.getElementById('stage');
+  var swipe=document.getElementById('swipe');
+  var handle=document.getElementById('handle');
+
+  var A=document.createElement('canvas'), B=document.createElement('canvas');
+  var actx=A.getContext('2d'), bctx=B.getContext('2d');
+
+  var peaks=[
+    [0.13,0.32,0.29,1.00],[0.37,0.70,0.20,0.74],[0.62,0.22,0.25,0.90],
+    [0.83,0.60,0.22,0.68],[0.49,0.44,0.15,-0.60],[0.25,0.82,0.14,0.46],
+    [0.95,0.20,0.17,0.54],[0.71,0.88,0.18,0.42],[0.05,0.72,0.13,0.38]
+  ];
+  function elev(x,y,ar){
+    var v=0,dx,dy,p;
+    for(var i=0;i<peaks.length;i++){
+      p=peaks[i]; dx=(x-p[0])*ar; dy=y-p[1];
+      v+=p[3]*Math.exp(-(dx*dx+dy*dy)/(2*p[2]*p[2]));
+    }
+    v+=0.20*Math.sin((x*2.2+y*1.4)*Math.PI);
+    v+=0.09*Math.sin((x*5.1-y*3.6)*Math.PI);
+    return v;
+  }
+
+  var W=0,H=0,dpr=1,grid=null,gw=0,gh=0,gs=2,lo=0,hi=0;
+
+  function build(){
+    W=stage.clientWidth; H=stage.clientHeight;
+    if(!W||!H) return false;
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    [cv,A,B].forEach(function(c){c.width=Math.round(W*dpr);c.height=Math.round(H*dpr)});
+    cv.style.width=W+'px'; cv.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    actx.setTransform(dpr,0,0,dpr,0,0);
+    bctx.setTransform(dpr,0,0,dpr,0,0);
+
+    var ar=W/H; gs=2;
+    gw=Math.ceil(W/gs)+2; gh=Math.ceil(H/gs)+2;
+    grid=new Float32Array(gw*gh); lo=1e9; hi=-1e9;
+    for(var j=0;j<gh;j++) for(var i=0;i<gw;i++){
+      var v=elev(i*gs/W,j*gs/H,ar);
+      grid[j*gw+i]=v;
+      if(v<lo)lo=v; if(v>hi)hi=v;
+    }
+    return true;
+  }
+  function sample(i,j){
+    i=i<0?0:(i>=gw?gw-1:i); j=j<0?0:(j>=gh?gh-1:j);
+    return grid[j*gw+i];
+  }
+
+  function renderPanels(){
+    var span=hi-lo||1, pw=A.width, ph=A.height;
+    var idA=actx.createImageData(pw,ph), idB=bctx.createImageData(pw,ph);
+    var dA=idA.data, dB=idB.data;
+    var lx=-0.62, ly=-0.62, lz=0.48, ln=Math.sqrt(lx*lx+ly*ly+lz*lz);
+    var bands=[[65,199,180],[127,191,90],[227,179,74],[217,106,82]];
+    var water=[46,127,168];
+
+    for(var py=0;py<ph;py++){
+      var gj=(py/dpr)/gs, j0=gj|0, fj=gj-j0;
+      for(var px=0;px<pw;px++){
+        var gi=(px/dpr)/gs, i0=gi|0, fi=gi-i0;
+        var h00=sample(i0,j0),h10=sample(i0+1,j0),h01=sample(i0,j0+1),h11=sample(i0+1,j0+1);
+        var h=h00*(1-fi)*(1-fj)+h10*fi*(1-fj)+h01*(1-fi)*fj+h11*fi*fj;
+        var gx=(sample(i0+1,j0)-sample(i0-1,j0))*0.5;
+        var gy=(sample(i0,j0+1)-sample(i0,j0-1))*0.5;
+        var sx=gx*46, sy=gy*46, nl=Math.sqrt(sx*sx+sy*sy+1);
+        var sh=(-sx*lx-sy*ly+lz)/(nl*ln); if(sh<0)sh=0;
+        var t=(h-lo)/span, lum=(15+t*46)*(0.42+0.95*sh);
+        var o=(py*pw+px)*4;
+        dA[o]=Math.min(255,lum*0.86)|0;
+        dA[o+1]=Math.min(255,lum*1.06)|0;
+        dA[o+2]=Math.min(255,lum*1.26)|0;
+        dA[o+3]=255;
+
+        var slope=Math.sqrt(gx*gx+gy*gy)*70, col;
+        if(t<0.16) col=water;
+        else if(slope<0.05) col=bands[0];
+        else if(slope<0.10) col=bands[1];
+        else if(slope<0.18) col=bands[2];
+        else col=bands[3];
+        var k=0.30+0.62*sh;
+        dB[o]=col[0]*k|0; dB[o+1]=col[1]*k|0; dB[o+2]=col[2]*k|0; dB[o+3]=255;
+      }
+    }
+    actx.setTransform(1,0,0,1,0,0); actx.putImageData(idA,0,0); actx.setTransform(dpr,0,0,dpr,0,0);
+    bctx.setTransform(1,0,0,1,0,0); bctx.putImageData(idB,0,0); bctx.setTransform(dpr,0,0,dpr,0,0);
+
+    var cgs=Math.max(6,Math.round(Math.min(W,H)/100));
+    var cw=Math.ceil(W/cgs)+1, ch=Math.ceil(H/cgs)+1;
+    var cf=new Float32Array(cw*ch), ar=W/H;
+    for(var jj=0;jj<ch;jj++) for(var ii=0;ii<cw;ii++)
+      cf[jj*cw+ii]=elev(ii*cgs/W,jj*cgs/H,ar);
+
+    for(var k2=1;k2<34;k2++){
+      var L=lo+span*k2/34, idx=(k2%5===0);
+      actx.beginPath();
+      actx.lineWidth=idx?1.1:0.55;
+      actx.strokeStyle=idx?'rgba(214,231,242,0.50)':'rgba(180,205,222,0.22)';
+      march(actx,cf,cw,ch,cgs,L);
+      actx.stroke();
+    }
+  }
+
+  function march(c,f,nx,ny,s,L){
+    for(var j=0;j<ny-1;j++){
+      for(var i=0;i<nx-1;i++){
+        var a=f[j*nx+i], b=f[j*nx+i+1], d=f[(j+1)*nx+i+1], e=f[(j+1)*nx+i], m=0;
+        if(a>L)m|=8; if(b>L)m|=4; if(d>L)m|=2; if(e>L)m|=1;
+        if(m===0||m===15) continue;
+        var x0=i*s, y0=j*s;
+        var T=[x0+s*(L-a)/(b-a),y0], R=[x0+s,y0+s*(L-b)/(d-b)];
+        var Bt=[x0+s*(L-e)/(d-e),y0+s], Lf=[x0,y0+s*(L-a)/(e-a)];
+        switch(m){
+          case 1: case 14: sg(c,Lf,Bt); break;
+          case 2: case 13: sg(c,Bt,R); break;
+          case 3: case 12: sg(c,Lf,R); break;
+          case 4: case 11: sg(c,T,R); break;
+          case 6: case 9:  sg(c,T,Bt); break;
+          case 7: case 8:  sg(c,Lf,T); break;
+          case 5:  sg(c,Lf,T); sg(c,Bt,R); break;
+          case 10: sg(c,Lf,Bt); sg(c,T,R); break;
+        }
+      }
+    }
+  }
+  function sg(c,p,q){c.moveTo(p[0],p[1]);c.lineTo(q[0],q[1])}
+
+  function compose(){
+    if(!grid) return;
+    var x=W*(swipe.value/1000);
+    ctx.clearRect(0,0,W,H);
+    ctx.drawImage(A,0,0,W,H);
+    ctx.save();
+    ctx.beginPath(); ctx.rect(x,0,W-x,H); ctx.clip();
+    ctx.drawImage(B,0,0,W,H);
+    ctx.restore();
+    handle.style.left=x+'px';
+  }
+  function full(){ if(build()){renderPanels();compose();} }
+
+  swipe.addEventListener('input',compose);
+  window.__terrainDraw=full;
+  full();
+
+  if(!reduce){
+    var target=480, t0=null;
+    swipe.value=1000; compose();
+    setTimeout(function(){
+      requestAnimationFrame(function step(ts){
+        if(t0===null)t0=ts;
+        var p=Math.min((ts-t0)/1100,1), e=1-Math.pow(1-p,3);
+        swipe.value=1000+(target-1000)*e;
+        compose();
+        if(p<1) requestAnimationFrame(step);
+      });
+    },560);
+  }
+
+  var tid;
+  window.addEventListener('resize',function(){clearTimeout(tid);tid=setTimeout(full,200)});
+})();
+</script>
+
+<script>
+(function(){
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── in-page anchor scrolling (robust against fixed header) ── */
+document.addEventListener('click',function(e){
+  var a=e.target.closest?e.target.closest('a[href^="#"]'):null;
+  if(!a)return;
+  var id=a.getAttribute('href'); if(!id||id==='#')return;
+  var el=document.querySelector(id); if(!el)return;
+  e.preventDefault(); e.stopPropagation();
+  var off=window.innerWidth<=1080?62:8;
+  var y=el.getBoundingClientRect().top+window.pageYOffset-off;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+},true);
+
+/* ── email: mailto, with clipboard fallback for people with no mail client ── */
+var toast=document.getElementById('toast');
+function say(msg){ if(!toast)return; toast.textContent=msg; toast.classList.add('on');
+  clearTimeout(toast._t); toast._t=setTimeout(function(){toast.classList.remove('on')},2600); }
+var EMAIL='shivachowdary27j@gmail.com';
+var mb=document.getElementById('mailbtn'), mc=document.getElementById('mailcard');
+function copyEmail(){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(EMAIL).then(function(){say('Copied \u00b7 '+EMAIL)},fallbackCopy);
+  } else fallbackCopy();
+}
+function fallbackCopy(){
+  try{
+    var ta=document.createElement('textarea'); ta.value=EMAIL;
+    ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    say('Copied \u00b7 '+EMAIL);
+  }catch(err){ say(EMAIL); }
+}
+if(mb&&mc){
+  mb.addEventListener('click',function(e){
+    e.stopPropagation();
+    var open=mc.classList.toggle('on');
+    mb.setAttribute('aria-expanded',open?'true':'false');
+  });
+  var cb=document.getElementById('copybtn');
+  if(cb) cb.addEventListener('click',function(e){ e.stopPropagation(); copyEmail(); });
+  var at=document.getElementById('addrtext');
+  if(at) at.addEventListener('click',copyEmail);
+  var gb=document.getElementById('gmailbtn');
+  if(gb) gb.addEventListener('click',function(){ mc.classList.remove('on'); mb.setAttribute('aria-expanded','false'); });
+  mc.addEventListener('click',function(e){e.stopPropagation()});
+  document.addEventListener('click',function(){ mc.classList.remove('on'); mb.setAttribute('aria-expanded','false'); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ mc.classList.remove('on'); mb.setAttribute('aria-expanded','false'); } });
+}
+
+/* ══════════════════════════════════════════════
+   AMBIENT BACKGROUND — contour field over a graticule.
+   Rendered once per resize; drifts slowly with scroll.
+   ══════════════════════════════════════════════ */
+(function(){
+  /* ════════════════════════════════════════════
+     BACKGROUND STYLE — change this one word:
+       'contour'  topographic contour field   (default)
+       'tiles'    map-tile mosaic + graticule
+       'points'   LiDAR-style point cloud
+       'hex'      H3-style hexagonal binning
+     ════════════════════════════════════════════ */
+  var BG_STYLE = 'contour';
+
+  var wrap=document.getElementById('bg'), cv=document.getElementById('bgc');
+  if(!cv||!cv.getContext) return;
+  var ctx=cv.getContext('2d'), W=0,H=0,dpr=1;
+  function rnd(s){var x=Math.sin(s*127.1)*43758.5453;return x-Math.floor(x)}
+
+  function fbm(x,y){
+    var v=0,a=0.5,fx=x,fy=y;
+    for(var i=0;i<4;i++){
+      v+=a*Math.sin(fx*1.7+Math.cos(fy*1.3)*1.9)*Math.cos(fy*1.1-Math.sin(fx*0.9)*1.4);
+      fx*=1.9;fy*=1.9;a*=0.5;
+    }
+    return v;
+  }
+
+  function graticule(step,alpha){
+    ctx.strokeStyle='rgba(46,127,168,'+alpha+')'; ctx.lineWidth=1;
+    ctx.beginPath();
+    for(var x=step;x<W;x+=step){ctx.moveTo(x,0);ctx.lineTo(x,H);}
+    for(var y=step;y<H;y+=step){ctx.moveTo(0,y);ctx.lineTo(W,y);}
+    ctx.stroke();
+  }
+
+  /* ── 1. CONTOUR ────────────────────────────── */
+  function drawContour(){
+    graticule(88,.16);
+    var gs=Math.max(9,Math.round(Math.min(W,H)/78));
+    var nx=Math.ceil(W/gs)+2, ny=Math.ceil(H/gs)+2;
+    var f=new Float32Array(nx*ny), lo=1e9, hi=-1e9, ar=W/H;
+    for(var j=0;j<ny;j++)for(var i=0;i<nx;i++){
+      var v=fbm(i*gs/W*ar*3.1, j*gs/H*3.1);
+      f[j*nx+i]=v; if(v<lo)lo=v; if(v>hi)hi=v;
+    }
+    var span=(hi-lo)||1;
+    function seg(p,q){ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1])}
+    function march(L){
+      for(var j=0;j<ny-1;j++)for(var i=0;i<nx-1;i++){
+        var a=f[j*nx+i],b=f[j*nx+i+1],d=f[(j+1)*nx+i+1],e2=f[(j+1)*nx+i],m=0;
+        if(a>L)m|=8; if(b>L)m|=4; if(d>L)m|=2; if(e2>L)m|=1;
+        if(m===0||m===15)continue;
+        var x0=i*gs,y0=j*gs;
+        var T=[x0+gs*(L-a)/(b-a),y0], R=[x0+gs,y0+gs*(L-b)/(d-b)];
+        var B=[x0+gs*(L-e2)/(d-e2),y0+gs], Lf=[x0,y0+gs*(L-a)/(e2-a)];
+        switch(m){
+          case 1: case 14: seg(Lf,B); break;   case 2: case 13: seg(B,R); break;
+          case 3: case 12: seg(Lf,R); break;   case 4: case 11: seg(T,R); break;
+          case 6: case 9:  seg(T,B); break;    case 7: case 8:  seg(Lf,T); break;
+          case 5: seg(Lf,T); seg(B,R); break;  case 10: seg(Lf,B); seg(T,R); break;
+        }
+      }
+    }
+    var N=30;
+    for(var k=1;k<N;k++){
+      var L=lo+span*k/N, idx=(k%5===0);
+      ctx.beginPath();
+      ctx.lineWidth=idx?1.15:0.75;
+      ctx.strokeStyle=idx?'rgba(140,195,225,.58)':'rgba(105,160,195,.30)';
+      march(L); ctx.stroke();
+    }
+    ctx.fillStyle='rgba(65,199,180,.42)';
+    for(var s2=0;s2<46;s2++){
+      ctx.beginPath();
+      ctx.arc((Math.sin(s2*91.7)*0.5+0.5)*W,(Math.cos(s2*57.3)*0.5+0.5)*H,1.25,0,6.283);
+      ctx.fill();
+    }
+  }
+
+  /* ── 2. TILES ──────────────────────────────── */
+  function drawTiles(){
+    var T=128, cols=Math.ceil(W/T)+1, rows=Math.ceil(H/T)+1;
+    var pal=['65,199,180','46,127,168','127,191,90','227,179,74','142,134,224'];
+    for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){
+      var k=r*97+c*31, v=rnd(k);
+      if(v>0.62){
+        var col=pal[Math.floor(rnd(k*3.7)*pal.length)%pal.length];
+        ctx.fillStyle='rgba('+col+','+(0.030+rnd(k*5.1)*0.055).toFixed(3)+')';
+        ctx.fillRect(c*T,r*T,T,T);
+      }
+      /* quadtree split on some tiles */
+      if(rnd(k*7.3)>0.80){
+        ctx.strokeStyle='rgba(46,127,168,.16)'; ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(c*T+T/2,r*T); ctx.lineTo(c*T+T/2,r*T+T);
+        ctx.moveTo(c*T,r*T+T/2); ctx.lineTo(c*T+T,r*T+T/2);
+        ctx.stroke();
+      }
+    }
+    ctx.strokeStyle='rgba(120,175,205,.22)'; ctx.lineWidth=1;
+    ctx.beginPath();
+    for(var x=0;x<=W;x+=T){ctx.moveTo(x,0);ctx.lineTo(x,H);}
+    for(var y=0;y<=H;y+=T){ctx.moveTo(0,y);ctx.lineTo(W,y);}
+    ctx.stroke();
+    /* corner ticks */
+    ctx.strokeStyle='rgba(65,199,180,.34)';
+    ctx.beginPath();
+    for(var yy=0;yy<=H;yy+=T)for(var xx=0;xx<=W;xx+=T){
+      ctx.moveTo(xx-5,yy); ctx.lineTo(xx+5,yy);
+      ctx.moveTo(xx,yy-5); ctx.lineTo(xx,yy+5);
+    }
+    ctx.stroke();
+  }
+
+  /* ── 3. POINTS ─────────────────────────────── */
+  function drawPoints(){
+    graticule(110,.09);
+    var n=Math.round((W*H)/2600);
+    for(var i=0;i<n;i++){
+      var x=rnd(i*3.11)*W, y=rnd(i*7.77)*H;
+      var d=fbm(x/W*2.4,y/H*2.4);
+      var a=0.10+Math.abs(d)*0.42, rr=0.7+Math.abs(d)*1.9;
+      var teal=d>0;
+      ctx.fillStyle=(teal?'rgba(65,199,180,':'rgba(90,150,190,')+a.toFixed(3)+')';
+      ctx.beginPath(); ctx.arc(x,y,rr,0,6.283); ctx.fill();
+    }
+    /* a few scan lines */
+    ctx.strokeStyle='rgba(65,199,180,.10)'; ctx.lineWidth=1;
+    for(var s2=0;s2<7;s2++){
+      var yy=rnd(s2*13.3)*H;
+      ctx.beginPath(); ctx.moveTo(0,yy); ctx.lineTo(W,yy+ (rnd(s2*2.2)-0.5)*70); ctx.stroke();
+    }
+  }
+
+  /* ── 4. HEX ────────────────────────────────── */
+  function drawHex(){
+    var R=34, hw=Math.sqrt(3)*R, vh=1.5*R;
+    var cols=Math.ceil(W/hw)+2, rows=Math.ceil(H/vh)+2;
+    for(var r=-1;r<rows;r++)for(var c=-1;c<cols;c++){
+      var cx=c*hw+(r%2?hw/2:0), cy=r*vh;
+      var v=Math.abs(fbm(cx/W*3.0,cy/H*3.0));
+      ctx.beginPath();
+      for(var i=0;i<6;i++){
+        var ang=Math.PI/180*(60*i-30);
+        var px=cx+R*Math.cos(ang), py=cy+R*Math.sin(ang);
+        if(i===0)ctx.moveTo(px,py); else ctx.lineTo(px,py);
+      }
+      ctx.closePath();
+      if(v>0.30){
+        var t=Math.min(1,(v-0.30)/0.55);
+        ctx.fillStyle='rgba('+(t>0.55?'65,199,180,':'46,127,168,')+(0.035+t*0.10).toFixed(3)+')';
+        ctx.fill();
+      }
+      ctx.strokeStyle='rgba(110,165,200,.16)'; ctx.lineWidth=0.9; ctx.stroke();
+    }
+  }
+
+  function draw(){
+    W=window.innerWidth; H=window.innerHeight+180;
+    dpr=Math.min(window.devicePixelRatio||1,1.5);
+    cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,W,H);
+    if(BG_STYLE==='tiles')      drawTiles();
+    else if(BG_STYLE==='points') drawPoints();
+    else if(BG_STYLE==='hex')    drawHex();
+    else                         drawContour();
+  }
+
+  var ticking=false;
+  function parallax(){ wrap.style.transform='translate3d(0,'+(-window.scrollY*0.045)+'px,0)'; ticking=false; }
+  window.addEventListener('scroll',function(){
+    if(!ticking && !reduce){ ticking=true; requestAnimationFrame(parallax); }
+  },{passive:true});
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(draw,220)});
+  draw();
+})();
+
+/* ── origin-story modal ── */
+var sBtn=document.getElementById('storybtn'), sMod=document.getElementById('story'),
+    sX=document.getElementById('storyx');
+function openStory(){ if(!sMod)return; sMod.classList.add('on'); document.body.style.overflow='hidden';
+  if(sX)sX.focus(); }
+function closeStory(){ if(!sMod)return; sMod.classList.remove('on'); document.body.style.overflow='';
+  if(sBtn)sBtn.focus(); }
+if(sBtn) sBtn.addEventListener('click',openStory);
+if(sX)   sX.addEventListener('click',closeStory);
+if(sMod) sMod.addEventListener('click',function(e){ if(e.target===sMod) closeStory(); });
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape' && sMod && sMod.classList.contains('on')) closeStory(); });
+
+/* ── tabs: crossfade, auto-advance until the user takes over ── */
+var tabs=[].slice.call(document.querySelectorAll('.tabs button'));
+var ORDER=['p-percep','p-route','p-terrain'];
+var DWELL=6200;
+var cursor=0, userTook=false, viewer=document.querySelector('.viewer');
+var prog=document.getElementById('prog'), bar=prog?prog.querySelector('i'):null;
+var last=0, held=0, rafP=null;
+
+function onPanel(id){var el=document.getElementById(id);return el&&el.classList.contains('on');}
+
+function show(id){
+  tabs.forEach(function(x){x.setAttribute('aria-selected', x.getAttribute('aria-controls')===id?'true':'false')});
+  [].slice.call(document.querySelectorAll('.panel')).forEach(function(p){p.classList.toggle('on',p.id===id)});
+  cursor=Math.max(0,ORDER.indexOf(id));
+  if(id==='p-route')   R.start();
+  if(id==='p-percep')  P.start();
+  if(id==='p-terrain' && window.__terrainDraw) setTimeout(window.__terrainDraw,40);
+}
+
+function visible(){
+  if(!viewer)return false;
+  var r=viewer.getBoundingClientRect();
+  return r.bottom>90 && r.top<window.innerHeight-90;
+}
+
+function tick(ts){
+  if(userTook){ rafP=null; return; }
+  if(!last) last=ts;
+  var dt=ts-last; last=ts;
+  if(!document.hidden && visible()) held+=dt;
+  if(bar) bar.style.width=Math.min(100,(held/DWELL)*100)+'%';
+  if(held>=DWELL){ held=0; if(bar)bar.style.width='0%'; show(ORDER[(cursor+1)%ORDER.length]); }
+  rafP=requestAnimationFrame(tick);
+}
+
+tabs.forEach(function(b){
+  b.addEventListener('click',function(){
+    userTook=true;
+    if(rafP){cancelAnimationFrame(rafP);rafP=null;}
+    if(prog)prog.classList.add('idle');
+    show(b.getAttribute('aria-controls'));
+  });
+});
+
+/* ══════════════════════════════════════════════
+   02 — MAP & ROUTE INFERENCE
+   Weighted road graph, animated A* frontier, then the path.
+   ══════════════════════════════════════════════ */
+var R=(function(){
+  var cv=document.getElementById('road'); if(!cv||!cv.getContext) return {start:function(){}};
+  var ctx=cv.getContext('2d'),stage=document.getElementById('stage2'),stat=document.getElementById('routestat');
+  var W,H,dpr,N=[],E=[],src,dst,order=[],path=[],raf=null,step=0,timer=null;
+  function rnd(s){var x=Math.sin(s*127.1)*43758.5453;return x-Math.floor(x)}
+  function build(){
+    W=stage.clientWidth;H=stage.clientHeight; if(!W||!H)return false;
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    cv.style.width=W+'px';cv.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+    var cols=Math.max(6,Math.round(W/82)),rows=Math.max(4,Math.round(H/74));
+    N=[];E=[];
+    for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){
+      var k=r*cols+c;
+      N.push({x:26+c*((W-52)/(cols-1))+(rnd(k*1.7)-0.5)*34,
+              y:22+r*((H-44)/(rows-1))+(rnd(k*3.1)-0.5)*28, i:k, adj:[]});
+    }
+    function link(a,b){ if(!a||!b)return;
+      var d=Math.hypot(a.x-b.x,a.y-b.y), w=d*(0.7+rnd(a.i*5.3+b.i*2.1)*0.9);
+      a.adj.push({n:b,w:w}); b.adj.push({n:a,w:w}); E.push([a,b]); }
+    for(var r2=0;r2<rows;r2++)for(var c2=0;c2<cols;c2++){
+      var id=r2*cols+c2,a=N[id];
+      if(c2<cols-1 && rnd(id*7.1)>0.13) link(a,N[id+1]);
+      if(r2<rows-1 && rnd(id*11.3)>0.17) link(a,N[id+cols]);
+      if(c2<cols-1 && r2<rows-1 && rnd(id*13.7)>0.84) link(a,N[id+cols+1]);
+    }
+    src=N[Math.floor(rows/2)*cols]; dst=N[Math.floor(rows/2)*cols+cols-1];
+    astar(); return true;
+  }
+  function astar(){
+    var open=[{n:src,g:0,f:0,p:null}],seen={},best={};
+    best[src.i]=0; order=[]; path=[]; var guard=0;
+    while(open.length && guard++<12000){
+      var bi=0; for(var q=1;q<open.length;q++) if(open[q].f<open[bi].f) bi=q;
+      var cur=open.splice(bi,1)[0];
+      if(seen[cur.n.i])continue; seen[cur.n.i]=1; order.push(cur.n);
+      if(cur.n===dst){var t=cur; while(t){path.unshift(t.n);t=t.p;} return;}
+      for(var i=0;i<cur.n.adj.length;i++){
+        var e=cur.n.adj[i],g=cur.g+e.w;
+        if(best[e.n.i]!==undefined && g>=best[e.n.i])continue;
+        best[e.n.i]=g;
+        open.push({n:e.n,g:g,f:g+Math.hypot(e.n.x-dst.x,e.n.y-dst.y)*0.92,p:cur});
+      }
+    }
+  }
+  function dot(n,col,r){ctx.beginPath();ctx.arc(n.x,n.y,r,0,6.283);ctx.fillStyle=col;ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='#0A1017'; ctx.fillRect(0,0,W,H);
+    ctx.lineWidth=1; ctx.strokeStyle='rgba(42,56,70,.9)'; ctx.beginPath();
+    for(var i=0;i<E.length;i++){ctx.moveTo(E[i][0].x,E[i][0].y);ctx.lineTo(E[i][1].x,E[i][1].y);}
+    ctx.stroke();
+    var lim=Math.min(step,order.length);
+    for(var j=0;j<lim;j++){
+      var fresh=(lim-j)<14;
+      ctx.fillStyle=fresh?'rgba(120,190,225,.9)':'rgba(46,127,168,.5)';
+      ctx.beginPath();ctx.arc(order[j].x,order[j].y,fresh?3:2.2,0,6.283);ctx.fill();
+    }
+    if(step>order.length && path.length){
+      var pf=Math.min(1,(step-order.length)/40), upto=Math.max(2,Math.ceil(path.length*pf));
+      ctx.lineWidth=2.6;ctx.strokeStyle='#8E86E0';ctx.lineJoin='round';ctx.lineCap='round';
+      ctx.beginPath();ctx.moveTo(path[0].x,path[0].y);
+      for(var k=1;k<upto;k++)ctx.lineTo(path[k].x,path[k].y);
+      ctx.stroke();
+      for(var m=0;m<upto;m++)dot(path[m],'#8E86E0',2.8);
+      if(stat)stat.textContent = pf>=1 ? ('Path found · '+path.length+' nodes') : 'Tracing route…';
+    } else if(stat) stat.textContent='Exploring · '+lim+' / '+order.length+' nodes';
+    dot(src,'#E3B34A',5.4); dot(dst,'#E3B34A',5.4);
+  }
+  function loop(){
+    step += reduce?500:3.4; draw();
+    if(step < order.length+80){ raf=requestAnimationFrame(loop); }
+    else { raf=null; timer=setTimeout(function(){ if(onPanel('p-route')){ step=0; loop(); } },2600); }
+  }
+  function start(){ if(raf)return; if(!N.length && !build())return; if(timer){clearTimeout(timer);timer=null;} step=0; loop(); }
+  window.addEventListener('resize',function(){ if(!onPanel('p-route'))return;
+    if(raf){cancelAnimationFrame(raf);raf=null;} if(timer){clearTimeout(timer);timer=null;}
+    build(); start(); });
+  return {start:start};
+})();
+
+/* ══════════════════════════════════════════════
+   03 — LIDAR PERCEPTION
+   Sweeping scan reveals a point cloud; clusters resolve into tracked boxes.
+   ══════════════════════════════════════════════ */
+var P=(function(){
+  var cv=document.getElementById('lidar'); if(!cv||!cv.getContext) return {start:function(){}};
+  var ctx=cv.getContext('2d'),stage=document.getElementById('stage3'),stat=document.getElementById('detstat');
+  var W,H,dpr,objs=[],pts=[],ang=-Math.PI,raf=null,ego;
+  function rnd(s){var x=Math.sin(s*127.1)*43758.5453;return x-Math.floor(x)}
+  function build(){
+    W=stage.clientWidth;H=stage.clientHeight; if(!W||!H)return false;
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    cv.style.width=W+'px';cv.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+    ego={x:W/2,y:H-22};
+    var defs=[[0.17,0.40,66,30,'CAR',0.94,'#41C7B4'],[0.40,0.20,60,26,'CAR',0.91,'#41C7B4'],
+              [0.72,0.32,26,34,'PED',0.88,'#E3B34A'],[0.86,0.54,68,30,'CAR',0.83,'#41C7B4'],
+              [0.28,0.66,24,32,'PED',0.61,'#D96A52'],[0.60,0.62,70,28,'CAR',0.96,'#41C7B4']];
+    objs=defs.map(function(d){return {x:d[0]*W,y:d[1]*(H-80)+22,w:d[2],h:d[3],lab:d[4],cf:d[5],col:d[6],seen:0};});
+    pts=[];
+    for(var i=0;i<700;i++){
+      var t=rnd(i*2.3),u=rnd(i*5.7),px,py;
+      if(rnd(i*1.3)>0.40){ var o=objs[Math.floor(rnd(i*9.1)*objs.length)%objs.length];
+        px=o.x-o.w/2+t*o.w; py=o.y-o.h/2+u*o.h; }
+      else { px=14+t*(W-28); py=16+u*(H-50); }
+      pts.push({x:px,y:py,a:Math.atan2(py-ego.y,px-ego.x)});
+    }
+    ang=-Math.PI; return true;
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='#0A1017'; ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='rgba(29,40,51,.95)'; ctx.lineWidth=1;
+    for(var r=64;r<Math.max(W,H)*1.1;r+=64){ctx.beginPath();ctx.arc(ego.x,ego.y,r,Math.PI,0);ctx.stroke();}
+    for(var i=0;i<pts.length;i++){ var p=pts[i];
+      if(p.a>=-Math.PI && p.a<=0 && ang>=p.a){
+        var fresh=(ang-p.a)<0.20;
+        ctx.fillStyle=fresh?'rgba(150,215,245,.95)':'rgba(46,127,168,.48)';
+        ctx.beginPath();ctx.arc(p.x,p.y,fresh?2.1:1.35,0,6.283);ctx.fill();
+      }
+    }
+    var n=0;
+    for(var j=0;j<objs.length;j++){ var o=objs[j];
+      var oa=Math.atan2(o.y-ego.y,o.x-ego.x);
+      if(ang>=oa) o.seen=Math.min(1,o.seen+0.055);
+      if(o.seen>0.02){ n++;
+        ctx.globalAlpha=o.seen; ctx.strokeStyle=o.col; ctx.lineWidth=1.6;
+        ctx.strokeRect(o.x-o.w/2,o.y-o.h/2,o.w,o.h);
+        ctx.font='9px ui-monospace,monospace'; ctx.fillStyle=o.col;
+        ctx.fillText(o.lab+' '+o.cf.toFixed(2), o.x-o.w/2, o.y-o.h/2-5);
+        ctx.globalAlpha=1;
+      }
+    }
+    var far=Math.max(W,H)*1.2;
+    var g=ctx.createLinearGradient(ego.x,ego.y,ego.x+Math.cos(ang)*far,ego.y+Math.sin(ang)*far);
+    g.addColorStop(0,'rgba(65,199,180,.35)'); g.addColorStop(1,'rgba(65,199,180,0)');
+    ctx.strokeStyle=g; ctx.lineWidth=2; ctx.beginPath();
+    ctx.moveTo(ego.x,ego.y); ctx.lineTo(ego.x+Math.cos(ang)*far,ego.y+Math.sin(ang)*far); ctx.stroke();
+    ctx.fillStyle='#41C7B4'; ctx.beginPath(); ctx.arc(ego.x,ego.y,5,0,6.283); ctx.fill();
+    ctx.strokeStyle='rgba(65,199,180,.42)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.arc(ego.x,ego.y,11,0,6.283); ctx.stroke();
+    if(stat) stat.textContent = n+' object'+(n===1?'':'s')+' detected';
+  }
+  function loop(){
+    ang += reduce?4:0.018;
+    if(ang>0.05){ ang=-Math.PI; objs.forEach(function(o){o.seen=0}); }
+    draw(); raf=requestAnimationFrame(loop);
+  }
+  function start(){ if(raf)return; if(!pts.length && !build())return; loop(); }
+  window.addEventListener('resize',function(){ if(!onPanel('p-percep'))return;
+    if(raf){cancelAnimationFrame(raf);raf=null;} build(); start(); });
+  return {start:start};
+})();
+
+/* ── kick off ── */
+P.start();
+if(!reduce) rafP=requestAnimationFrame(tick); else if(prog) prog.classList.add('idle');
+})();
+</script>
+</body>
+</html>
